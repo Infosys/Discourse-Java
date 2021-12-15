@@ -1,0 +1,51 @@
+{
+    "name": "TextClassification",
+    "fields": [
+        {
+            "fieldName": "contentId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "toxicity",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "severeToxicity",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "obscene",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "threat",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "insult",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "identityHate",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "TextClassficationType",
+            "fieldValues": "TOPIC,POST"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20210603075536",
+    "entityTableName": "text_classification",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "enableEntityAudit": true
+}

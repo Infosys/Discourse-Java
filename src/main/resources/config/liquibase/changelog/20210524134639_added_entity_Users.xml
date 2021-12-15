@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2021 Infosys Ltd.
+  ~ Use of this source code is governed by GNU General Public License version 2
+  ~ that can be found in the LICENSE file or at
+  ~ https://opensource.org/licenses/GPL-2.0
+  -->
+
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <!--
+        Added the entity Users.
+    -->
+    <changeSet id="20210524134639-1" author="jhipster">
+        <createTable tableName="users">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="username" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="seen_notification_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="last_posted_at" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="password_hash" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="salt" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="active" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="username_lower" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="last_seen_at" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="admin" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="last_emailed_at" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="trust_level" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="approved" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="approved_by_id" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="approved_at" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="previous_visit_at" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="suspended_at" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="suspended_till" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="date_of_birth" type="date">
+                <constraints nullable="true" />
+            </column>
+            <column name="views" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="flag_level" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="ip_address" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="moderator" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="uploaded_avatar_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="locale" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="primary_group_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="registration_ip_address" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="staged" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="first_seen_at" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="silenced_till" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="group_locked_trust_level" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="manual_locked_trust_level" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="secure_identifier" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="user_security_keys_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="users" columnName="last_posted_at" columnDataType="datetime"/>
+        <dropDefaultValue tableName="users" columnName="last_seen_at" columnDataType="datetime"/>
+        <dropDefaultValue tableName="users" columnName="last_emailed_at" columnDataType="datetime"/>
+        <dropDefaultValue tableName="users" columnName="approved_at" columnDataType="datetime"/>
+        <dropDefaultValue tableName="users" columnName="previous_visit_at" columnDataType="datetime"/>
+        <dropDefaultValue tableName="users" columnName="suspended_at" columnDataType="datetime"/>
+        <dropDefaultValue tableName="users" columnName="suspended_till" columnDataType="datetime"/>
+        <dropDefaultValue tableName="users" columnName="first_seen_at" columnDataType="datetime"/>
+        <dropDefaultValue tableName="users" columnName="silenced_till" columnDataType="datetime"/>
+    </changeSet>
+
+    <changeSet id="20210524134639-1-relations" author="jhipster">
+
+    </changeSet>
+
+    <!-- Added the entity audit columns -->
+    <changeSet id="20210524111121-audit-1" author="jhipster-entity-audit">
+        <addColumn tableName="users">
+            <column name="created_by" type="varchar(50)" defaultValue="system">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" defaultValueDate="${now}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="varchar(50)"/>
+            <column name="last_modified_date" type="timestamp"/>
+        </addColumn>
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20210524134639-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/users.csv"
+                  separator=";"
+                  tableName="users">
+            <column name="id" type="numeric"/>
+            <column name="username" type="string"/>
+            <column name="name" type="string"/>
+            <column name="seen_notification_id" type="numeric"/>
+            <column name="last_posted_at" type="datetime"/>
+            <column name="password_hash" type="string"/>
+            <column name="salt" type="string"/>
+            <column name="active" type="boolean"/>
+            <column name="username_lower" type="string"/>
+            <column name="last_seen_at" type="datetime"/>
+            <column name="admin" type="boolean"/>
+            <column name="last_emailed_at" type="datetime"/>
+            <column name="trust_level" type="numeric"/>
+            <column name="approved" type="boolean"/>
+            <column name="approved_by_id" type="string"/>
+            <column name="approved_at" type="datetime"/>
+            <column name="previous_visit_at" type="datetime"/>
+            <column name="suspended_at" type="datetime"/>
+            <column name="suspended_till" type="datetime"/>
+            <column name="date_of_birth" type="date"/>
+            <column name="views" type="numeric"/>
+            <column name="flag_level" type="numeric"/>
+            <column name="ip_address" type="string"/>
+            <column name="moderator" type="boolean"/>
+            <column name="title" type="string"/>
+            <column name="uploaded_avatar_id" type="numeric"/>
+            <column name="locale" type="string"/>
+            <column name="primary_group_id" type="numeric"/>
+            <column name="registration_ip_address" type="string"/>
+            <column name="staged" type="boolean"/>
+            <column name="first_seen_at" type="datetime"/>
+            <column name="silenced_till" type="datetime"/>
+            <column name="group_locked_trust_level" type="numeric"/>
+            <column name="manual_locked_trust_level" type="numeric"/>
+            <column name="secure_identifier" type="string"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

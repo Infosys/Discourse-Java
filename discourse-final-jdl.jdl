@@ -1,0 +1,1707 @@
+entity AllowedPmUsers {
+	userId String required,
+	allowedPmUserId String required
+}
+
+entity AnonymousUsers {
+	userId String required,
+	masterUserId String required,
+	active Boolean required
+}
+
+entity ApiKeyScopes {
+	apiKeyId Long required,
+	resource String required,
+	action String required,
+	allowedParameters String	
+}
+
+entity ApiKeys {
+	userId String,
+	allowedIps String,
+	hidden Boolean required,
+	lastUsedAt Instant,
+	revokedAt Instant,
+	description String,
+	keyHash String required,
+	truncatedKey String required
+}
+
+entity ApplicationRequests {
+	date LocalDate required,
+	reqType Long required,
+	count Long required
+}
+
+entity ArInternalMetadata {
+	key String required,
+	value String
+}
+
+entity BackupDraftPosts {
+	userId String required,
+	postId Long required,
+	key String required
+}
+
+entity BackupDraftTopics {
+	userId String required,
+	topicId Long required
+}
+
+entity BackupMetadata {
+	name String required,
+	value String
+}
+
+entity BadgeGroupings {
+	name String required,
+	description String,
+	position Long required
+}
+
+entity BadgePosts {
+	userId String,
+	topicId Long,
+	postNumber Long,
+	raw TextBlob,
+	cooked String,
+	replyToPostNumber Long,
+	replyCount Integer,
+	quoteCount Integer,
+	deletedAt Instant,
+	offTopicCount Integer,
+	likeCount Integer,
+	incomingLinkCount Integer,
+	bookmarkCount Integer,
+	score Double,
+	reads Integer,
+	postType Integer,
+	sortOrder Integer,
+	lastEditorId String,
+	hidden Boolean,
+	hiddenReasonId Long,
+	notifyModeratorsCount Integer,
+	spamCount Integer,
+	illegalCount Integer,
+	inappropriateCount Integer,
+	lastVersionAt Instant,
+	userDeleted Boolean,
+	replyToUserId String,
+	percentRank Double,
+	notifyUserCount Integer,
+	likeScore Integer,
+	deletedById String,
+	editReason String,
+	wordCount Integer,
+	version Integer,
+	cookMethod Integer,
+	wiki Boolean,
+	bakedAt Instant,
+	bakedVersion Integer,
+	hiddenAt Instant,
+	selfEdits Integer,
+	replyQuoted Boolean,
+	viaEmail Boolean,
+	rawEmail String,
+	publicVersion Integer,
+	actionCode String,
+	lockedById String,
+	imageUploadId Long
+}
+
+entity BadgeTypes {
+	name String required
+}
+
+entity Badges {
+	name String required,
+	description String,
+	badgeTypeId Long required,
+	grantCount Integer required,
+	allowTitle Boolean required,
+	multipleGrant Boolean required,
+	icon String,
+	listable Boolean,
+	targetPosts Boolean,
+	query String,
+	enabled Boolean required,
+	autoRevoke Boolean required,
+	badgeGroupingId Long required,
+	trigger Integer,
+	showPosts Boolean required,
+	system Boolean required,
+	image String,
+	longDescription String,
+	imageUploadId Long
+}
+
+entity Bookmarks {
+	userId String required,
+	topicId Long required,
+	postId Long required,
+	name String,
+	reminderType Integer,
+	reminderAt Instant,
+	reminderLastSentAt Instant,
+	reminderSetAt Instant,
+	autoDeletePreference Integer required,
+	pinned Boolean
+}
+
+entity Categories {
+	name String required,
+	color String required,
+	topicId Long,
+	topicCount Integer required,
+	userId String required,
+	topicsYear Integer,
+	topicsMonth Integer,
+	topicsWeek Integer,
+	slug String required,
+	description String,
+	textColor String required,
+	readRestricted Boolean required,
+	autoCloseHours Double,
+	postCount Integer required,
+	latestPostId Long,
+	latestTopicId Long,
+	position Integer,
+	parentCategoryId Long,
+	postsYear Integer,
+	postsMonth Integer,
+	postsWeek Integer,
+	emailIn String,
+	emailInAllowStrangers Boolean,
+	topicsDay Integer,
+	postsDay Integer,
+	allowBadges Boolean required,
+	nameLower String ,
+	autoCloseBasedOnLastPost Boolean,
+	topicTemplate String,
+	containsMessages Boolean,
+	sortOrder String,
+	sortAscending Boolean,
+	uploadedLogoId Long,
+	uploadedBackgroundId Long,
+	topicFeaturedLinkAllowed Boolean,
+	allTopicsWiki Boolean required,
+	showSubcategoryList Boolean,
+	numFeaturedTopics Integer,
+	defaultView String,
+	subcategoryListStyle String,
+	defaultTopPeriod String,
+	mailinglistMirror Boolean required,
+	minimumRequiredTags Integer required,
+	navigateToFirstPostAfterRead Boolean required,
+	searchPriority Integer,
+	allowGlobalTags Boolean required,
+	reviewableByGroupId Long,
+	requiredTagGroupId Long,
+	minTagsFromRequiredGroup Integer required,
+	readOnlyBanner String,
+	defaultListFilter String,
+	allowUnlimitedOwnerEditsOnFirstPost Boolean required
+}
+
+entity CategoriesWebHooks {
+	webHookId Long required,
+	categoryId Long required
+}
+
+entity CategoryCustomFields {
+	categoryId Long required,
+	name String required,
+	value String
+}
+
+entity CategoryFeaturedTopics {
+	categoryId Long required,
+	topicId Long required,
+	rank Integer required
+}
+
+entity CategoryGroups {
+	categoryId Long required,
+	groupId Long required,
+	permissionType Integer
+}
+
+entity CategorySearchData {
+	categoryId Long required,
+	searchData String,
+	rawData String,
+	locale String,
+	version Integer
+}
+
+entity CategoryTagGroups {
+	categoryId Long required,
+	tagGroupId Long required
+}
+
+entity CategoryTagStats {
+	categoryId Long required,
+	tagId Long required,
+	topicCount Integer required
+}
+
+entity CategoryTags {
+	categoryId Long required,
+	tagId Long required
+}
+
+entity CategoryUsers {
+	categoryId Long required,
+	userId String required,
+	notificationLevel Integer,
+	lastSeenAt Instant
+}
+
+entity ChildThemes {
+	parentThemeId Long,
+	childThemeId Long
+}
+
+entity ColorSchemeColors {
+	name String required ,
+	hex String required ,
+	colorSchemeId Long required
+}
+
+entity ColorSchemes {	
+	name String required ,
+	version Integer required,
+	viaWizard Boolean required,
+	baseSchemeId String,
+	themeId Long,
+	userSelectable Boolean required
+}
+
+entity CustomEmojis {	
+	name String required ,
+	uploadId Long required,
+	group String 
+}
+
+entity Developers {	
+	userId String required
+}
+
+entity DirectoryItems {	
+	periodType Integer required,
+	userId String required,
+	likesReceived Integer required,
+	likesGiven Integer required,
+	topicsEntered Integer required,
+	topicCount Integer required,
+	postCount Integer required,
+	daysVisited Integer required,
+	postsRead Integer required
+}
+
+entity DismissedTopicUsers {	
+	userId String,
+	topicId Long,
+	createdAt Instant
+}
+
+entity DoNotDisturbTimings {	
+	userId String required,
+	startsAt Instant required,
+	endsAt Instant required,
+	scheduled Boolean
+}
+
+entity DraftSequences {	
+	userId String required,
+	draftKey String required ,
+	sequence Long required
+}
+
+entity Drafts {	
+	userId String required,
+	draftKey String required,
+	data String required,
+	sequence Long required,
+	revisions Integer required,
+	owner String 
+}
+
+entity EmailChangeRequests {	
+	userId String required,
+	oldEmail String ,
+	newEmail String required ,
+	oldEmailTokenId Integer,
+	newEmailTokenId Integer,
+	changeState Integer required,
+	requestedByUserId String
+}
+
+entity EmailLogs {	
+	toAddress String required ,
+	emailType String required ,
+	userId String,
+	postId Long,
+	bounceKey String ,
+	bounced Boolean required,
+	messageId String 
+}
+
+entity EmailTokens {	
+	userId String required,
+	email String required,
+	token String required,
+	confirmed Boolean required,
+	expired Boolean required,
+	updatedAt Instant required
+}
+
+entity EmbeddableHosts {	
+	host String required,
+	categoryId Long required,
+	className String,
+	allowedPaths String 
+}
+
+entity GivenDailyLikes {
+	userId String required,
+	likesGiven Integer required,
+	givenDate LocalDate required,
+	limitReached Boolean required
+}
+
+entity GroupArchivedMessages {
+	groupId Long required,
+	topicId Long required
+}
+
+entity GroupCategoryNotificationDefaults {	
+	groupId Long required,
+	categoryId Long required,
+	notificationLevel Integer required
+}
+
+entity GroupCustomFields {	
+	groupId Long required,
+	name String required,
+	value String
+}
+
+entity GroupHistories {	
+	groupId Long required,
+	actingUserId String required,
+	targetUserId String,
+	action Integer required,
+	subject String,
+	prevValue String,
+	newValue String,
+	updatedAt Instant required
+}
+
+entity GroupMentions {	
+	postId Long,
+	groupId Long,
+	updatedAt Instant required
+}
+
+entity GroupRequests {	
+	groupId Long,
+	userId String,
+	reason String,
+	updatedAt Instant required
+}
+
+entity GroupTagNotificationDefaults {	
+	groupId Long required,
+	tagId Long required,
+	notificationLevel Integer required
+}
+
+entity GroupUsers {	
+	groupId Long required,
+	userId String required,
+	owner Boolean required,
+	notificationLevel Integer required,
+	firstUnreadPmAt Instant required
+}
+
+entity Groups {	
+	name String required,
+	automatic Boolean required,
+	userCount Integer required,
+	automaticMembershipEmailDomains String ,
+	primaryGroup Boolean required,
+	title String,
+	grantTrustLevel Integer,
+	incomingEmail String,
+	hasMessages Boolean required,
+	flairUrl String,
+	flairBgColor String,
+	flairColor String,
+	bioRaw String,
+	bioCooked String,
+	allowMembershipRequests Boolean required,
+	fullName String,
+	defaultNotificationLevel Integer required,
+	visibilityLevel Integer required,
+	publicExit Boolean required,
+	publicAdmission Boolean required,
+	membershipRequestTemplate String ,
+	messageableLevel Integer,
+	mentionableLevel Integer,
+	smtpServer String,
+	smtpPort Integer,
+	smtpSsl Boolean,
+	imapServer String,
+	imapPort Integer,
+	imapSsl Boolean,
+	imapMailboxName String required,
+	imapUidValidity Integer required,
+	imapLastUid Integer required,
+	emailUsername String,
+	emailPassword String,
+	publishReadState Boolean required,
+	membersVisibilityLevel Integer required,
+	imapLastError String,
+	imapOldEmails Integer,
+	imapNewEmails Integer,
+	flairIcon String,
+	flairUploadId Integer,
+	allowUnknownSenderTopicReplies Boolean required
+}
+
+entity GroupsWebHooks {
+	webHookId Long required,
+	groupId Long required
+}
+
+entity IgnoredUsers {	
+	userId String required,
+	ignoredUserId String required,
+	summarizedAt Instant,
+	expiringAt Instant required
+}
+
+entity ImapSyncLogs {	
+	level Integer required,
+	message String required,
+	groupId Long
+}
+
+entity IncomingDomains {	
+	name String required,
+	https Boolean required,
+	port Integer required
+}
+
+entity IncomingEmails {	
+	userId String,
+	topicId Long,
+	postId Long,
+	raw String,
+	error String,
+	messageId String,
+	fromAddress String,
+	toAddresses String,
+	ccAddresses String,
+	subject String,
+	rejectionMessage String,
+	isAutoGenerated Boolean,
+	isBounce Boolean required,
+	imapUidValidity Integer,
+	imapUid Integer,
+	imapSync Boolean,
+	imapGroupId Long,
+	imapMissing Boolean required,
+	createdVia Integer required
+}
+
+entity IncomingLinks {	
+	userId String,
+	ipAddress String,
+	currentUserId String,
+	postId Long required,
+	incomingRefererId Long
+}
+
+entity IncomingReferers {	
+	path String required ,
+	incomingDomainId Long required
+}
+
+entity InvitedGroups {	
+	groupId Long,
+	inviteId Long
+}
+
+entity InvitedUsers {	
+	userId String,
+	inviteId Long required,
+	redeemedAt Instant,
+	updatedAt Instant required
+}
+
+entity Invites {	
+	inviteKey String required ,
+	email String ,
+	invitedById String required,
+	userId String,
+	redeemedAt Instant,
+	deletedAt Instant,
+	deletedById String,
+	invalidatedAt Instant,
+	moderator Boolean required,
+	customMessage String ,
+	emailedStatus Integer,
+	maxRedemptionsAllowed Integer required,
+	redemptionCount Integer required,
+	expiresAt Instant required,
+	emailToken String 
+}
+
+entity JavascriptCaches {	
+	themeFieldId Long,
+	digest String ,
+	content String required,
+	themeId Long
+}
+
+entity LinkedTopics {	
+	topicId Long required,
+	originalTopicId Long required,
+	sequence Integer required
+}
+
+entity MessageBus {	
+	name String,
+	context String,
+	data String
+}
+
+entity MutedUsers {	
+	userId String required,
+	mutedUserId String required
+}
+
+entity Notifications {
+	notificationType Integer required,
+	userId String required,
+	data String required ,
+	read Boolean required,
+	topicId Long,
+	postNumber Integer,
+	postActionId Long,
+	highPriority Boolean required
+}
+
+entity Oauth2UserInfos {	
+	userId String required,
+	uid String required,
+	provider String required,
+	email String,
+	name String,
+	updatedAt Instant required
+}
+
+entity OnceoffLogs {	
+	jobName String
+}
+
+entity OptimizedImages {	
+	sha1 String required,
+	extension String required,
+	width Integer required,
+	height Integer required,
+	uploadId Long required,
+	url String required,
+	filesize Integer,
+	etag String,
+	version Integer
+}
+
+entity Permalinks {	
+	url String required,
+	topicId Long,
+	postId Long,
+	categoryId Long,
+	externalUrl String,
+	tagId Long
+}
+
+entity PluginStoreRows {	
+	pluginName String required,
+	key String required,
+	typeName String required,
+	value String 
+}
+
+entity PollOptions {
+	pollId Long,
+	digest String required,
+	html String required,
+	anonymousVotes Integer
+}
+
+entity PollVotes {
+	pollId Long,
+	pollOptionId Long,
+	userId Long
+}
+
+entity Polls {
+	postId Long,
+	name String required,
+	closeAt Instant,
+	type Integer required,
+	status Integer required,
+	results Integer required,
+	visibility Integer required,
+	min Integer,
+	max Integer,
+	step Integer,
+	anonymousVoters Integer,
+	chartType Integer required,
+	groups String,
+	title String 
+}
+
+entity PostActionTypes {
+	nameKey String required,
+	isFlag Boolean required,
+	icon String,	
+	position Integer required,
+	scoreBonus Double required,
+	reviewablePriority Integer required
+}
+
+entity PostActions {	
+	postId Long required,
+	userId String required,
+	postActionTypeId Long required,
+	deletedAt Instant,
+	deletedById String,
+	relatedPostId Long,
+	staffTookAction Boolean required,
+	deferredById String,
+	targetsTopic Boolean required,
+	agreedAt Instant,
+	agreedById String,
+	deferredAt Instant,
+	disagreedAt Instant,
+	disagreedById String
+}
+
+entity PostCustomFields {	
+	postId Long required,
+	name String required,
+	value String,
+	updatedAt Instant required
+}
+
+entity PostDetails {	
+	postId Long,
+	key String,
+	value String,
+	extra String
+}
+
+entity PostReplies {
+	postId Long,	
+	replyPostId Long
+}
+
+entity PostReplyKeys {	
+	userId String required,
+	postId Long required,
+	replyKey String required,
+}
+
+entity PostRevisions {
+	userId String,
+	postId Long,
+	modifications String,
+	number Integer,
+	hidden Boolean required
+}
+
+entity PostSearchData {
+	postId Long required,
+	searchData String,
+	rawData String,
+	locale String,
+	version Integer,
+	privateMessage Boolean required
+}
+
+entity PostStats {	
+	postId Long,
+	draftsSaved Integer,
+	typingDurationMsecs Integer,
+	composerOpenDurationMsecs Integer
+}
+
+entity PostTimings {
+	topicId Long required,
+	postNumber Integer required,
+	userId String required,
+	msecs Integer required
+}
+
+entity PostUploads {	
+	postId Long required,
+	uploadId Long required
+}
+
+entity Posts {
+	userId String,
+	topicId Long required,
+	postNumber Integer required,
+	raw TextBlob required,
+	cooked String required,	
+	replyToPostNumber Long,
+	replyCount Integer required,
+	quoteCount Integer required,
+	deletedAt Instant,
+	offTopicCount Integer required,
+	likeCount Integer required,
+	incomingLinkCount Integer required,
+	bookmarkCount Integer required,
+	score Double,
+	reads Integer required,
+	postType Integer required,
+	sortOrder Integer,
+	lastEditorId String,
+	hidden Boolean required,
+	hiddenReasonId Long,
+	notifyModeratorsCount Integer required,
+	spamCount Integer required,
+	illegalCount Integer required,
+	inappropriateCount Integer required,
+	lastVersionAt Instant required,
+	userDeleted Boolean required,
+	replyToUserId String,
+	percentRank Double,
+	notifyUserCount Integer required,
+	likeScore Integer required,
+	deletedById String,
+	editReason String ,
+	wordCount Integer,
+	version Integer required,
+	cookMethod Integer required,
+	wiki Boolean required,
+	bakedAt Instant,
+	bakedVersion Integer,
+	hiddenAt Instant,
+	selfEdits Integer required,
+	replyQuoted Boolean required,
+	viaEmail Boolean required,
+	rawEmail String ,
+	publicVersion Integer required,
+	actionCode String ,
+	lockedById String,
+	imageUploadId Long
+}
+
+entity PublishedPages {	
+	topicId Long required,
+	slug String required,
+	publiclyAvailable Boolean required
+}
+
+entity PushSubscriptions {	
+	userId String required,
+	data String required
+}
+
+entity QuotedPosts {	
+	postId Long required,
+	quotedPostId Long required
+}
+
+entity RemoteThemes {	
+	remoteUrl String required,
+	remoteVersion String,
+	localVersion String,
+	aboutUrl String,
+	licenseUrl String,
+	commitsBehind Integer,
+	remoteUpdatedAt Instant,
+	privateKey String,
+	branch String,
+	lastErrorText String,
+	authors String,
+	themeVersion String,
+	minimumDiscourseVersion String,
+	maximumDiscourseVersion String 
+}
+
+entity ReviewableClaimedTopics {	
+	userId String required,
+	topicId Long required
+}
+
+entity ReviewableHistories {	
+	reviewableId Long required,
+	reviewableHistoryType Integer required,
+	status Integer required,
+	edited String
+}
+
+entity ReviewableScores {	
+	reviewableId Long required,
+	userId String required,
+	reviewableScoreType Integer required,
+	status Integer required,
+	score Double required,
+	takeActionBonus Double required,
+	reviewedById String,
+	reviewedAt Instant,
+	metaTopicId Long,
+	reason String,
+	userAccuracyBonus Double required
+}
+
+entity Reviewables {	
+	type String required ,
+	status Integer required,
+	reviewableByModerator Boolean required,
+	reviewableByGroupId Long,
+	categoryId Long,
+	topicId Long,
+	score Double required,
+	potentialSpam Boolean required,
+	targetId Long,
+	targetType String ,
+	targetCreatedById String,
+	payload String,
+	version Integer required,
+	latestScore Instant,
+	forceReview Boolean required,
+	rejectReason String 
+}
+
+entity SchedulerStats {	
+	name String required,
+	hostname String required,
+	pid Long required,
+	durationMs Integer,
+	liveSlotsStart Integer,
+	liveSlotsFinish Integer,
+	startedAt Instant required,
+	success Boolean,
+	error String 
+}
+
+entity SchemaMigrationDetails {	
+	version String required,
+	name String,
+	hostname String,
+	gitVersion String,
+	railsVersion String,
+	duration Integer,
+	direction String
+}
+
+entity SchemaMigrations {
+	version String required 
+}
+
+entity ScreenedEmails {	
+	email String required,
+	actionType Integer required,
+	matchCount Integer required,
+	lastMatchAt Instant,
+	ipAddress String 
+}
+
+entity ScreenedIpAddresses {	
+	ipAddress String required,
+	actionType Integer required,
+	matchCount Integer required,
+	lastMatchAt Instant
+}
+
+entity ScreenedUrls {	
+	url String required,
+	domain String required,
+	actionType Integer required,
+	matchCount Integer required,
+	lastMatchAt Instant,
+	ipAddress String 
+}
+
+entity SearchLogs {	
+	term String required,
+	userId String,
+	ipAddress String,
+	searchResultId Long,
+	searchType Integer required,
+	searchResultType Integer
+}
+
+entity SharedDrafts {
+	topicId Long required,
+	categoryId Long required
+}
+
+entity ShelvedNotifications {	
+	notificationId Long required
+}
+
+entity SingleSignOnRecords {	
+	userId String required,
+	externalId String required,
+	lastPayload String required,
+	externalUsername String,
+	externalEmail String,
+	externalName String,
+	externalAvatarUrl String,
+	externalProfileBackgroundUrl String,
+	externalCardBackgroundUrl String 
+}
+
+entity SiteSettings {	
+	name String required,
+	dataType Integer required,
+	value String
+}
+
+entity SkippedEmailLogs {	
+	emailType String required,
+	toAddress String required,
+	userId String,
+	postId Long,
+	reasonType Integer required,
+	customReason String
+}
+
+entity StylesheetCache {	
+	target String required,
+	digest String required,
+	content String required,
+	themeId Long required,
+	sourceMap String 
+}
+
+entity TagGroupMemberships {	
+	tagId Long required,
+	tagGroupId Long required
+}
+
+entity TagGroupPermissions {	
+	tagGroupId Long required,
+	groupId Long required,
+	permissionType Integer required
+}
+
+entity TagGroups {	
+	name String required,
+	parentTagId Long,
+	onePerTopic Boolean
+}
+
+entity TagSearchData {
+	tagId Long required,
+	searchData String,
+	rawData String,
+	locale String,
+	version Integer
+}
+
+entity TagUsers {	
+	tagId Long required,
+	userId String required,
+	notificationLevel Integer required
+}
+
+entity Tags {	
+	name String required,
+	topicCount Integer required,
+	pmTopicCount Integer required,
+	targetTagId Long
+}
+
+entity TagsWebHooks {
+	webHookId Long required,
+	tagId Long required
+}
+
+entity ThemeFields {
+	themeId Long required,
+	targetId Long required,
+	name String required,
+	value String required,
+	valueBaked String,
+	compilerVersion String required,
+	error String,
+	uploadId Long,
+	typeId Long required
+}
+
+entity ThemeModifierSets {	
+	themeId Long required,
+	serializeTopicExcerpts Boolean,
+	cspExtensions String,
+	svgIcons String,
+	topicThumbnailSizes String 
+}
+
+entity ThemeSettings {	
+	name String required,
+	dataType Integer required,
+	value String,
+	themeId Long required
+}
+
+entity ThemeTranslationOverrides {	
+	themeId Long required,
+	locale String required,
+	translationKey String required,
+	value String required
+}
+
+entity Themes {
+	name String required,
+	userId String required,
+	compilerVersion Integer required,
+	userSelectable Boolean required,
+	hidden Boolean required,
+	colorSchemeId Long,
+	remoteThemeId Long,
+	componentAvailable Boolean required,
+	enabled Boolean required,
+	autoUpdate Boolean required
+}
+
+entity TopTopics {	
+	topicId Long,
+	yearlyPostsCount Integer required,
+	yearlyViewsCount Integer required,
+	yearlyLikesCount Integer required,
+	monthlyPostsCount Integer required,
+	monthlyViewsCount Integer required,
+	monthlyLikesCount Integer required,
+	weeklyPostsCount Integer required,
+	weeklyViewsCount Integer required,
+	weeklyLikesCount Integer required,
+	dailyPostsCount Integer required,
+	dailyViewsCount Integer required,
+	dailyLikesCount Integer required,
+	dailyScore Double,
+	weeklyScore Double,
+	monthlyScore Double,
+	yearlyScore Double,
+	allScore Double,
+	dailyOpLikesCount Integer required,
+	weeklyOpLikesCount Integer required,
+	monthlyOpLikesCount Integer required,
+	yearlyOpLikesCount Integer required,
+	quarterlyPostsCount Integer required,
+	quarterlyViewsCount Integer required,
+	quarterlyLikesCount Integer required,
+	quarterlyScore Double,
+	quarterlyOpLikesCount Integer required
+}
+
+entity TopicAllowedGroups {	
+	groupId Long required,
+	topicId Long required
+}
+
+entity TopicAllowedUsers {	
+	userId String required,
+	topicId Long required
+}
+
+entity TopicCustomFields {	
+	topicId Long required,
+	name String required,
+	value String
+}
+
+entity TopicEmbeds {	
+	topicId Long required,
+	postId Long required,
+	embedUrl String required,
+	contentSha1 String,
+	deletedAt Instant,
+	deletedById String
+}
+
+entity TopicGroups {	
+	groupId Long required,
+	topicId Long required,
+	lastReadPostNumber Long required
+}
+
+entity TopicInvites {	
+	topicId Long required,
+	inviteId Long required
+}
+
+entity TopicLinkClicks {	
+	topicLinkId Long required,
+	userId String,
+	ipAddress String 
+}
+
+entity TopicLinks {	
+	topicId Long required,
+	postId Long,
+	userId String required,
+	url String required,
+	domain String required ,
+	internal Boolean required,
+	linkTopicId Long,
+	reflection Boolean,
+	clicks Integer required,
+	linkPostId Long,
+	title String,
+	crawledAt Instant,
+	quote Boolean required,
+	extension String 
+}
+
+entity TopicSearchData {
+	topicId Long required,
+	rawData String,
+	locale String required,
+	searchData String,
+	version Integer
+}
+
+entity TopicTags {	
+	topicId Long required,
+	tagId Long required
+}
+
+entity TopicThumbnails {	
+	uploadId Long required,
+	optimizedImageId Long,
+	maxWidth Integer required,
+	maxHeight Integer required
+}
+
+entity TopicTimers {	
+	executeAt Instant required,
+	statusType Integer required,
+	userId String required,
+	topicId Long required,
+	basedOnLastPost Boolean required,
+	deletedAt Instant,
+	deletedById String,
+	categoryId Long,
+	publicType Boolean,
+	duration Integer,
+	durationMinutes Integer
+}
+
+entity TopicUsers {
+	userId String required,
+	topicId Long required,
+	posted Boolean required,
+	lastReadPostNumber Integer,
+	highestSeenPostNumber Integer,
+	lastVisitedAt Instant,
+	firstVisitedAt Instant,
+	notificationLevel Integer required,
+	notificationsChangedAt Instant,
+	notificationsReasonId Long,
+	totalMsecsViewed Integer required,
+	clearedPinnedAt Instant,	
+	lastEmailedPostNumber Integer,
+	liked Boolean,
+	bookmarked Boolean,
+	lastPostedAt Instant
+}
+
+entity TopicViews {
+	topicId Long required,
+	viewedAt LocalDate required,
+	userId String,
+	ipAddress String 
+}
+
+entity Topics {	
+	title String required,
+	lastPostedAt Instant,
+	views Integer required,
+	postsCount Integer required,
+	userId String,
+	lastPostUserId Long required,
+	replyCount Integer required,
+	featuredUser1Id String,
+	featuredUser2Id String,
+	featuredUser3Id String,
+	deletedAt Instant,
+	highestPostNumber Integer required,
+	likeCount Integer required,
+	incomingLinkCount Integer required,
+	categoryId Long,
+	visible Boolean required,
+	moderatorPostsCount Integer required,
+	closed Boolean required,
+	archived Boolean required,
+	bumpedAt Instant required,
+	hasSummary Boolean required,
+	archetype String required,
+	featuredUser4Id String,
+	notifyModeratorsCount Integer required,
+	spamCount Integer required,
+	pinnedAt Instant,
+	score Double,
+	percentRank Double required,
+	subtype String,
+	slug String,
+	deletedById String,
+	participantCount Integer,
+	wordCount Integer,
+	excerpt String,
+	pinnedGlobally Boolean required,
+	pinnedUntil Instant,
+	fancyTitle String,
+	highestStaffPostNumber Integer required,
+	featuredLink String,
+	reviewableScore Double required,
+	imageUploadId Long,
+	slowModeSeconds Integer required
+}
+
+entity TranslationOverrides {	
+	locale String required,
+	translationKey String required,
+	value String required,
+	compiledJs String 
+}
+
+entity UnsubscribeKeys {
+	key String required ,
+	userId String required,
+	unsubscribeKeyType String,
+	topicId Long,
+	postId Long
+}
+
+entity Uploads {
+	userId String required,
+	originalFilename String required,
+	filesize Integer required,
+	width Integer,
+	height Integer,
+	url String required,
+	sha1 String,
+	origin String,
+	retainHours Integer,
+	extension String,
+	thumbnailWidth Integer,
+	thumbnailHeight Integer,
+	etag String,
+	secure Boolean required,
+	accessControlPostId Long,
+	originalSha1 String,
+	animated Boolean,
+	verified Boolean,
+	verificationStatus Integer required,
+	securityLastChangedAt Instant,
+	securityLastChangedReason String 
+}
+
+entity UserActions {	
+	actionType Integer required,
+	userId String required,
+	targetTopicId Long,
+	targetPostId Long,
+	targetUserId String,
+	actingUserId String
+}
+
+entity UserApiKeyScopes {	
+	userApiKeyId Long required,
+	name String required,
+	allowedParameters String
+}
+
+entity UserApiKeys {	
+	userId String required,
+	clientId String required,
+	applicationName String required,
+	pushUrl String,
+	revokedAt Instant,
+	scopes String ,
+	lastUsedAt Instant required,
+	keyHash String required 
+}
+
+entity UserArchivedMessages {	
+	userId String required,
+	topicId Long required
+}
+
+entity UserAssociatedAccounts {	
+	providerName String required,
+	providerUid String required,
+	userId String,
+	lastUsed Instant required,
+	info String required,
+	credentials String required,
+	extra String required
+}
+
+entity UserAuthTokenLogs {	
+	action String required,
+	userAuthTokenId Long,
+	userId String,
+	clientIp String,
+	userAgent String,
+	authToken String,
+	path String 
+}
+
+entity UserAuthTokens {	
+	userId String required,
+	authToken String required,
+	prevAuthToken String required,
+	userAgent String,
+	authTokenSeen Boolean required,
+	clientIp String,
+	rotatedAt Instant required,
+	seenAt Instant
+}
+
+entity UserAvatars {	
+	userId String required,
+	customUploadId Long,
+	gravatarUploadId Long,
+	lastGravatarDownloadAttempt Instant,
+	updatedAt Instant required
+}
+
+entity UserBadges {	
+	badgeId Long required,
+	userId String required,
+	grantedAt Instant required,
+	grantedById String required,
+	postId Long,
+	notificationId Long,
+	seq Integer required,
+	featuredRank Integer
+}
+
+entity UserCustomFields {	
+	userId String required,
+	name String required,
+	value String
+}
+
+entity UserEmails {	
+	userId String required,
+	email String required ,
+	primary Boolean required
+}
+
+entity UserExports {	
+	fileName String required ,
+	userId String required,
+	uploadId Long,
+	topicId Long
+}
+
+entity UserFieldOptions {	
+	userFieldId Long required,
+	value String required
+}
+
+entity UserFields {	
+	name String required,
+	fieldType String required,
+	editable Boolean required,
+	description String required,
+	required Boolean required,
+	showOnProfile Boolean required,
+	position Integer,
+	showOnUserCard Boolean required,
+	externalName String,
+	externalType String,
+	searchable Boolean required
+}
+
+entity UserHistories {	
+	action Integer required,
+	actingUserId String,
+	targetUserId String,
+	details String,
+	context String,
+	ipAddress String,
+	email String,
+	subject String,
+	previousValue String,
+	newValue String,
+	topicId Long,
+	adminOnly Boolean,
+	postId Long,
+	customType String,
+	categoryId Long
+}
+
+entity UserIpAddressHistories {	
+	userId String required,
+	ipAddress String required
+}
+
+entity UserNotificationSchedules {	
+	userId String required,
+	enabled Boolean required,
+	day0StartTime Integer required,
+	day0EndTime Integer required,
+	day1StartTime Integer required,
+	day1EndTime Integer required,
+	day2StartTime Integer required,
+	day2EndTime Integer required,
+	day3StartTime Integer required,
+	day3EndTime Integer required,
+	day4StartTime Integer required,
+	day4EndTime Integer required,
+	day5StartTime Integer required,
+	day5EndTime Integer required,
+	day6StartTime Integer required,
+	day6EndTime Integer required
+}
+
+entity UserOpenIds {	
+	userId String required,
+	email String required,
+	url String required,
+	active Boolean required
+}
+
+entity UserOptions {
+	userId String required,
+	mailingListMode Boolean required,
+	emailDigests Boolean,
+	externalLinksInNewTab Boolean required,
+	enableQuoting Boolean required,
+	dynamicFavicon Boolean required,
+	disableJumpReply Boolean required,
+	automaticallyUnpinTopics Boolean required,
+	digestAfterMinutes Integer,
+	autoTrackTopicsAfterMsecs Integer,
+	newTopicDurationMinutes Integer,
+	lastRedirectedToTopAt Instant,
+	emailPreviousReplies Integer required,
+	emailInReplyTo Boolean required,
+	likeNotificationFrequency Integer required,
+	mailingListModeFrequency Integer required,
+	includeTl0InDigests Boolean,
+	notificationLevelWhenReplying Integer,
+	themeKeySeq Integer required,
+	allowPrivateMessages Boolean required,
+	homepageId Long,
+	themeIds Long required,
+	hideProfileAndPresence Boolean required,
+	textSizeKey Integer required,
+	textSizeSeq Integer required,
+	emailLevel Integer required,
+	emailMessagesLevel Integer required,
+	titleCountModeKey Integer required,
+	enableDefer Boolean required,
+	timezone String ,
+	enableAllowedPmUsers Boolean required,
+	darkSchemeId Long,
+	skipNewUserTips Boolean required,
+	colorSchemeId Long
+}
+
+entity UserProfileViews {	
+	userProfileId Long required,
+	viewedAt Instant required,
+	ipAddress String,
+	userId String
+}
+
+entity UserProfiles {
+	userId String required,
+	location String,
+	website String,
+	bioRaw String,
+	bioCooked String,
+	dismissedBannerKey Integer,
+	bioCookedVersion Integer,
+	badgeGrantedTitle Boolean,
+	views Integer required,
+	profileBackgroundUploadId Long,
+	cardBackgroundUploadId Long,
+	grantedTitleBadgeId Long,
+	featuredTopicId Long
+}
+
+entity UserSearchData {
+	userId String required,
+	searchData String,
+	rawData String,
+	locale String,
+	version Integer
+}
+
+entity UserSecondFactors {	
+	userId String required,
+	method Integer required,
+	data String required,
+	enabled Boolean required,
+	lastUsed Instant,
+	name String 
+}
+
+entity UserSecurityKeys {	
+	userId Long required,
+	credentialId String required,
+	publicKey String required,
+	factorType Integer required,
+	enabled Boolean required,
+	name String required,
+	lastUsed Instant
+}
+
+entity UserStats {
+	userId String required,
+	topicsEntered Integer required,
+	timeRead Integer required,
+	daysVisited Integer required,
+	postsReadCount Integer required,
+	likesGiven Integer required,
+	likesReceived Integer required,
+	newSince Instant required,
+	readFaq Instant,
+	firstPostCreatedAt Instant,
+	postCount Integer required,
+	topicCount Integer required,
+	bounceScore Double required,
+	resetBounceScoreAfter Instant,
+	flagsAgreed Integer required,
+	flagsDisagreed Integer required,
+	flagsIgnored Integer required,
+	firstUnreadAt Instant required,
+	distinctBadgeCount Integer required,
+	firstUnreadPmAt Instant required,
+	digestAttemptedAt Instant
+}
+
+entity UserUploads {	
+	uploadId Long required,
+	userId String required
+}
+
+entity UserVisits {	
+	userId String required,
+	visitedAt LocalDate required,
+	postsRead Integer,
+	mobile Boolean,
+	timeRead Integer required
+}
+
+entity UserWarnings {	
+	topicId Long required,
+	userId String required
+}
+
+entity Users {
+	username String required,	
+	name String,
+	seenNotificationId Long required,
+	lastPostedAt Instant,
+	passwordHash String,
+	salt String,
+	active Boolean required,
+	usernameLower String required,
+	lastSeenAt Instant,
+	admin Boolean required,
+	lastEmailedAt Instant,
+	trustLevel Integer required,
+	approved Boolean required,
+	approvedById String,
+	approvedAt Instant,
+	previousVisitAt Instant,
+	suspendedAt Instant,
+	suspendedTill Instant,
+	dateOfBirth LocalDate,
+	views Integer required,
+	flagLevel Integer required,
+	ipAddress String ,
+	moderator Boolean,
+	title String,
+	uploadedAvatarId Long,
+	locale String,
+	primaryGroupId Long,
+	registrationIpAddress String ,
+	staged Boolean required,
+	firstSeenAt Instant,
+	silencedTill Instant,
+	groupLockedTrustLevel Integer,
+	manualLockedTrustLevel Integer,
+	secureIdentifier String 
+}
+
+entity WatchedWords {	
+	word String required ,
+	action Integer required,
+	replacement String 
+}
+
+entity WebCrawlerRequests {	
+	date LocalDate required,
+	userAgent String required,
+	count Integer required
+}
+
+enum WebHookEventTypes {
+	DEFAULT
+}
+
+entity WebHookEventTypesHooks {
+	webHookId Long required,
+	webHookEventTypeId Long required
+}
+
+entity WebHookEvents {	
+	webHookId Long required,
+	headers String,
+	payload String,
+	status Integer,
+	responseHeaders String,
+	responseBody String,
+	duration Integer
+}
+
+entity WebHooks {	
+	payloadUrl String required,
+	contentType Integer required,
+	lastDeliveryStatus Integer required,
+	status Integer required,
+	secret String,
+	wildcardWebHook Boolean required,
+	verifyCertificate Boolean required,
+	active Boolean required
+}
+
+
+
+// Relations
+// badges
+
+relationship OneToMany {
+	UserProfiles{badges} to Badges{userProfiles},
+	PollVotes{pollOptions} to PollOptions{pollVotes},
+	PollVotes{polls} to Polls{pollVotes},
+	Polls{posts} to Posts{polls},
+	JavascriptCaches{themeFields} to ThemeFields{javascriptCaches},
+	JavascriptCaches{themes} to Themes{javascriptCaches},
+	UserProfiles{uploads} to Uploads{userProfiles},
+	UserSecurityKeys{users} to Users{userSecurityKeys}
+}
+
+// Options
+service all with serviceImpl
+paginate * with pagination
+dto * with mapstruct
+filter Posts,Categories,Topics 
+

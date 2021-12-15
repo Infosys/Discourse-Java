@@ -1,0 +1,83 @@
+<!--
+  ~ Copyright 2021 Infosys Ltd.
+  ~ Use of this source code is governed by GNU General Public License version 2
+  ~ that can be found in the LICENSE file or at
+  ~ https://opensource.org/licenses/GPL-2.0
+  -->
+
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-text-classification-heading">Create or edit a Text Classification</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_contentId">Content Id</label>
+                    <input type="number" class="form-control" name="contentId" id="field_contentId"
+                           formControlName="contentId"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_toxicity">Toxicity</label>
+                    <input type="number" class="form-control" name="toxicity" id="field_toxicity"
+                           formControlName="toxicity"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_severeToxicity">Severe Toxicity</label>
+                    <input type="number" class="form-control" name="severeToxicity" id="field_severeToxicity"
+                           formControlName="severeToxicity"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_obscene">Obscene</label>
+                    <input type="number" class="form-control" name="obscene" id="field_obscene"
+                           formControlName="obscene"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_threat">Threat</label>
+                    <input type="number" class="form-control" name="threat" id="field_threat"
+                           formControlName="threat"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_insult">Insult</label>
+                    <input type="number" class="form-control" name="insult" id="field_insult"
+                           formControlName="insult"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_identityHate">Identity Hate</label>
+                    <input type="number" class="form-control" name="identityHate" id="field_identityHate"
+                           formControlName="identityHate"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_type">Type</label>
+                    <select class="form-control" name="type" formControlName="type" id="field_type">
+                        <option value="TOPIC">TOPIC</option>
+                        <option value="POST">POST</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

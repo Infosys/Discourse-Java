@@ -1,0 +1,20 @@
+<!--
+  ~ Copyright 2021 Infosys Ltd.
+  ~ Use of this source code is governed by GNU General Public License version 2
+  ~ that can be found in the LICENSE file or at
+  ~ https://opensource.org/licenses/GPL-2.0
+  -->
+
+<ng-container *ngIf='!userIsLoggedIn || hasUserAcceptedPolicy'>
+    <div>
+        <router-outlet name="navbar"></router-outlet>
+    </div>
+
+    <div class="container-fluid main-page-container">
+        <div class="marT16 router-outlet-wrapper" [ngClass]='{"padLR16": !isViewSmall}'>
+            <router-outlet></router-outlet>
+        </div>
+
+        <!-- <jhi-footer></jhi-footer> -->
+    </div>
+</ng-container>

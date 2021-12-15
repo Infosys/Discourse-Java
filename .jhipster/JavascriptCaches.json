@@ -1,0 +1,48 @@
+{
+  "name": "JavascriptCaches",
+  "fields": [
+    {
+      "fieldName": "themeFieldId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "digest",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "content",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "themeId",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "themeFields",
+      "otherEntityRelationshipName": "javascriptCaches",
+      "relationshipName": "themeFields"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "themes",
+      "otherEntityRelationshipName": "javascriptCaches",
+      "relationshipName": "themes"
+    }
+  ],
+  "changelogDate": "20210524120139",
+  "entityTableName": "javascript_caches",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "enableEntityAudit": true
+}

@@ -1,0 +1,16 @@
+{
+   "namespace": "com.infy.avroschema",
+   "type": "record",
+   "name": "TextClassificationResponse",
+   "fields": [
+		{ "name": "id", "type": ["null", "long"],"default": null },
+        { "name": "type", "type": ["null", "string"],"default": null},
+        { "name": "content", "type": ["null", "string"],"default": null },
+        { "name": "toxicity", "type": ["null", "double"],"default": null },
+        { "name": "severe_toxicity", "type": ["null", "double"],"default": null },
+        { "name": "obscene", "type": ["null", "double"],"default": null },
+        { "name": "threat", "type": ["null", "double"],"default": null },
+        { "name": "insult", "type": ["null", "double"],"default": null },
+        { "name": "identity_hate", "type": ["null", "double"],"default": null }
+   ]
+}

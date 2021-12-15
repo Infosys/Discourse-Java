@@ -1,0 +1,26 @@
+{
+  "name": "ChildThemes",
+  "fields": [
+    {
+      "fieldName": "parentThemeId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "childThemeId",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20210524112739",
+  "entityTableName": "child_themes",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "enableEntityAudit": true
+}

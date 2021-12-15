@@ -1,0 +1,198 @@
+<!--
+  ~ Copyright 2021 Infosys Ltd.
+  ~ Use of this source code is governed by GNU General Public License version 2
+  ~ that can be found in the LICENSE file or at
+  ~ https://opensource.org/licenses/GPL-2.0
+  -->
+
+<div [formGroup]="categoryTagFormGroup" class="d-flex marNLR4">
+  <div class="d-inline-block">
+    <div class="d-inline-block padLR4 marB16">
+      <mat-chip class="DSA_wb_chipStyle-Normal DSA_choiseChip select-chip h-40" disableRipple="true"
+        (click)='openMatSelect(0)'>
+        <mat-select formControlName="category" (selectionChange)="filterByCategory()" disableOptionCentering
+          panelClass="DSA_wb-custom-select" #categorySelector>
+          <mat-option [value]="'-1'"> All Categories </mat-option>
+          <mat-option *ngFor="let category of categoryList" [value]="category.id">
+            {{ category.name! | titlecase }}
+          </mat-option>
+        </mat-select>
+      </mat-chip>
+    </div>
+    <!-- <div class="d-inline-block padLR4 marB16">
+        <mat-chip class="DSA_wb_chipStyle-Normal DSA_choiseChip select-chip h-40" disableRipple="true"
+          (click)='openMatSelect(1)'>
+          <mat-select formControlName="tags" disableOptionCentering panelClass="DSA_wb-custom-select" #tagsSelector>
+            <mat-option *ngFor="let tag of tagList" [value]="tag">
+              {{ tag | titlecase }}
+            </mat-option>
+          </mat-select>
+        </mat-chip>
+      </div> -->
+  </div>
+  <ng-container *ngIf='!isViewXsOrSm'>
+    <ng-template [ngTemplateOutlet]='navigationalChipsTemplate'></ng-template>
+  </ng-container>
+  <div class="d-inline-block marB16 ml-auto">
+    <mat-chip
+      class="DSA_wb_chipStyle-Normal DSA_choiseChip cursor-pointer d-flex align-items-center purple-background h-40 padL8"
+      disableRipple="true" (click)="showEditorPanel()">
+      <i class="icon x-16 icon-add purple iconinline marR8 create-chip-plus-icon"> </i>
+      Create
+    </mat-chip>
+  </div>
+</div>
+
+<div *ngIf='isViewXsOrSm' class="marNLR4">
+  <ng-template [ngTemplateOutlet]='navigationalChipsTemplate'></ng-template>
+</div>
+
+<div class="overflow-x-auto" *ngIf="topicList.length !== 0 && pageContent === 'TOPICS'">
+  <table class="DSA_wb_custom-table marT16">
+    <thead>
+      <tr>
+        <th *ngFor="let column of displayColumn">{{ column }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let topic of topicList" class="padTB16 cursor-pointer" (click)="viewTopicDiscussion(topic.id!)">
+        <td class="max-width_65vw">
+          <div class="DSA_wb_mainBodyTxt">
+            {{ topic?.name }}
+          </div>
+          <jhi-category [categoryId]='topic?.category_id'></jhi-category>
+        </td>
+        <td>
+          <div class="d-flex align-items-center marTB8">
+            <ngx-avatar [name]="topic?.username" [size]="35" [round]="true" class="marL0" [matTooltip]="topic?.username"
+              matTooltipClass="DSA_tooltip">
+            </ngx-avatar>
+          </div>
+        </td>
+        <td>{{ topic?.post_number }}</td>
+
+        <td>{{ topic?.created_at | date }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="topicList.length === 0 && pageContent === 'TOPICS'">
+  <h1 class="DSA_wb_h1Header">No topics found</h1>
+</div>
+
+<div class="row overflow-x-auto" *ngIf="pageContent === 'CATEGORIES'">
+  <div [class]="isViewXsOrSm ? 'col-12' : 'col-6'">
+    <table class="DSA_wb_custom-table marT16">
+      <thead>
+        <tr>
+          <th class="nopadL">Categories</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let category of categoryList" class="padTB16 cursor-pointer category-border-left"
+          [style.border-color]="category?.color" (click)="categoryClicked(category)">
+          <td class="padL16">
+            <div class="DSA_wb_h2Header padT8 padB16 d-flex align-items-center">
+              {{ category.name! | titlecase }}
+              <span class="DSA_wb_chipStyle DSA_wb_bluechip marL16" matTooltip="Total Topics"
+                matTooltipClass="DSA_tooltip">
+                {{ category?.topic_count }}
+              </span>
+            </div>
+            <div class="DSA_wb_mainBodyTxt padB8">{{ category?.description }}</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-6" *ngIf='!isViewXsOrSm'>
+    <table class="DSA_wb_custom-table marT16">
+      <thead>
+        <tr>
+          <th>Latest</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let topic of topicList" class="padTB16 cursor-pointer" (click)="viewTopicDiscussion(topic.id!)">
+          <td>
+            <div class="d-inline-block text-nowrap padTB8">
+              <div class="d-flex justify-content-center align-items-center">
+                <div class="d-flex align-items-center marTB8">
+                  <ngx-avatar [name]="topic?.username" [size]="35" [round]="true" class="marL0"></ngx-avatar>
+                </div>
+                <div class="marL8">
+                  <div class="padB16">
+                    <span class="DSA_wb_mainBodyTxt" style="white-space: normal !important">
+                      {{ topic?.name }}
+                    </span>
+                    <span class="DSA_wb_chipStyle DSA_wb_bluechip marL16" matTooltip="Total Posts"
+                      matTooltipClass="DSA_tooltip">
+                      {{ topic?.post_number }}
+                    </span>
+                  </div>
+                  <jhi-category [categoryId]='topic?.category_id'></jhi-category>
+                  <!-- <div class="d-inline-block icon-div marR8" [ngStyle]="{ background: topic?.color }"></div> -->
+                  <div class="DSA_wb_mainBodyTxt2 d-inline text-nowrap">
+                    {{ categoryList[topic.categoryId]?.name! | titlecase }} &nbsp;| &nbsp;<span
+                      matTooltip="Last created on {{ topic?.created_at | date }} 17'May"
+                      matTooltipClass="DSA_tooltip">{{ topic?.created_at | date }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div *ngIf="pageContent === 'ANNOUNCEMENTS'">
+  <div *ngFor='let announcement of announcements; let i = index; last as isLast' class="cursor-pointer announcement"
+    (click)='navigateToAnnouncement(i)'>
+    <h1 class="DSA_wb_h1Header padTB16">{{announcement?.title}}</h1>
+    <hr *ngIf='!isLast'>
+  </div>
+  <div *ngIf='announcements?.length === 0'>
+    <h1 class="DSA_wb_h1Header">No new announcements for now</h1>
+  </div>
+</div>
+
+<ng-template #navigationalChipsTemplate>
+  <div class="d-inline-block">
+    <div class="d-inline-block padLR4 marB16">
+      <mat-chip class="DSA_wb_chipStyle-Normal DSA_choiseChip h-40 d-flex align-items-center cursor-pointer"
+        disableRipple="true"
+        [ngClass]="{ 'web-SecondaryBlue disable-pointer-events': topicsType.sort[0] === sortHomePageRequestHeader.latest && pageContent === 'TOPICS' }"
+        (click)="changeTopicListOrder(0)">
+        Latest</mat-chip>
+    </div>
+    <div class="d-inline-block padLR4 marB16">
+      <mat-chip class="DSA_wb_chipStyle-Normal DSA_choiseChip h-40 d-flex align-items-center cursor-pointer"
+        disableRipple="true"
+        [ngClass]="{ 'web-SecondaryBlue disable-pointer-events': topicsType.sort[0] === sortHomePageRequestHeader.top && pageContent === 'TOPICS' }"
+        (click)="changeTopicListOrder(1)">
+        Top
+      </mat-chip>
+    </div>
+    <div class="d-inline-block padLR4 marB16">
+      <mat-chip class="DSA_wb_chipStyle-Normal DSA_choiseChip h-40 d-flex align-items-center cursor-pointer"
+        disableRipple="true" [ngClass]="{ 'web-SecondaryBlue disable-pointer-events': pageContent === 'CATEGORIES' }"
+        (click)="viewCategories()">
+        Categories</mat-chip>
+    </div>
+    <div class="d-inline-block padLR4 marB16">
+      <mat-chip class="DSA_wb_chipStyle-Normal DSA_choiseChip h-40 d-flex align-items-center cursor-pointer"
+        disableRipple="true" [ngClass]="{ 'web-SecondaryBlue disable-pointer-events': pageContent === 'ANNOUNCEMENTS' }"
+        (click)="viewAnnouncements()">
+        Announcements</mat-chip>
+    </div>
+  </div>
+</ng-template>
+
+<jhi-angular-rich-text-editor (onSubmitClick)="submitEditorContent($event)" [(showEditor)]="showEditor"
+  [enableAnnouncement]='true'>
+</jhi-angular-rich-text-editor>
+
+<jhi-loader></jhi-loader>

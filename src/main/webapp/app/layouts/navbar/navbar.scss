@@ -1,0 +1,96 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+
+.custom-navbar {
+  background-color: #8626c3 !important;
+  color: white !important;
+  position: fixed !important;
+  width: 100% !important;
+  top: 0 !important;
+  height: 48px !important;
+  z-index: 2 !important;
+  .DSA_wb_h2HeaderRegular {
+    font-size: 2.2rem;
+  }
+  .logo {
+    color: white !important;
+  }
+  .dropdown-toggle::after {
+    display: none !important;
+  }
+}
+
+.custom-list-h2 {
+  font-size: 1.4rem !important;
+  i {
+    margin-left: 0px !important;
+  }
+}
+
+.profile {
+  ::ng-deep .dropdown-menu.show {
+    width: 15em !important;
+  }
+}
+
+.custom-log-out-icon {
+  transform: rotate(90deg) !important;
+}
+
+.DSA_headersearchIcon {
+  top: 0px !important;
+  bottom: 0px !important;
+}
+
+.DSA_headersearch {
+  width: 400px !important;
+}
+
+.DSA_navHideSrch {
+  visibility: visible !important;
+  right: 0 !important;
+}
+
+input {
+  box-shadow: none !important;
+}
+
+::ng-deep .mat-form-field-label-wrapper {
+  top: -0.3em !important;
+}
+
+.search-results {
+  width: 400px;
+  position: absolute;
+  top: 40px;
+  background-color: whitesmoke;
+  border-radius: 4px;
+  border-top: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.result-title {
+  color: black;
+}
+
+.result-title:hover {
+  color: blue;
+}
+
+.black-color-text {
+  color: black;
+}
+
+.notifications-list {
+  border-radius: 8px !important;
+  overflow-y: hidden !important;
+  ul {
+    max-height: 64vh !important;
+    overflow-y: auto !important;
+    li:hover {
+      border-left: 4px solid;
+    }
+  }
+}

@@ -1,0 +1,179 @@
+<!--
+  ~ Copyright 2021 Infosys Ltd.
+  ~ Use of this source code is governed by GNU General Public License version 2
+  ~ that can be found in the LICENSE file or at
+  ~ https://opensource.org/licenses/GPL-2.0
+  -->
+
+<nav class="custom-navbar d-flex align-items-center padTB16"
+  [ngClass]="{ padLR16: showSearchInputInSmallDevices || isViewSmall, padLR32: !showSearchInputInSmallDevices && !isViewSmall }">
+  <a class="logo text-nowrap" routerLink="/all-topics" *ngIf="!showSearchInputInSmallDevices">
+    <span class="DSA_wb_h2HeaderRegular">Infosys | </span>
+    <span class="DSA_wb_mainBodyTxt2">Forums</span>
+  </a>
+
+  <div class="d-flex align-items-center justify-content-center w-100 padLR16"
+    *ngIf="!isViewSmall && !showSearchInputInSmallDevices && currentlyLoggedInUser?.username"
+    (clickOutside)="hideSearchResults()">
+    <div class="DSA_headersearch relative d-block" (click)="showSearchResults()">
+      <input placeholder="Search topics" aria-label="Search topics" class="DSA_headersearchInput"
+        [(ngModel)]="searchInputValue" (ngModelChange)="search()" />
+      <a href="javascript:void(0)" class="DSA_headersearchIcon iconinline icon x-16 search-icon"
+        aria-label="search"></a>
+    </div>
+    <ng-container *ngIf="(searchByTitleResults.length > 0 || searchByTagsResults.length > 0) && showSearchResultsBox">
+      <ng-template [ngTemplateOutlet]="searchResultsTemplate"></ng-template>
+    </ng-container>
+  </div>
+
+  <div class="DSA_leftSrch relative DSA_navHideSrch" id="mainSearch"
+    *ngIf="showSearchInputInSmallDevices && currentlyLoggedInUser?.username" (clickOutside)="hideSearchResults()">
+    <div class="container-fluid" (click)="showSearchResults()">
+      <div class="DSA_logo clearfix">
+        <div class="DSA_headerTitle nomarR">
+          <mat-form-field class="custom-form-field white">
+            <input id="typeahead-template" type="text" matInput placeholder="Search topics"
+              [(ngModel)]="searchInputValue" (ngModelChange)="search()" />
+            <a href="javascript:void(0)" class="DSA_iconSrch" aria-label="search"><i
+                class="icon x-24 white search-icon"> </i></a>
+          </mat-form-field>
+        </div>
+        <a href="javascript:void(0);" class="DSA_vertical-LeftCenter icon x-24 white back-icon" aria-label="back"
+          (click)="disableSearchInputInSmallDevices()">
+        </a>
+      </div>
+    </div>
+    <ng-container *ngIf="(searchByTitleResults.length > 0 || searchByTagsResults.length > 0) && showSearchResultsBox">
+      <ng-template [ngTemplateOutlet]="searchResultsTemplate"></ng-template>
+    </ng-container>
+  </div>
+
+  <div *ngIf="isViewSmall && !showSearchInputInSmallDevices && currentlyLoggedInUser?.username"
+    class="d-inline-block ml-auto marR16">
+    <a href="javascript:void(0)" (click)="enableSearchInputInSmallDevices()" class="d-inline-block"
+      aria-label="search"><i class="icon x-24 white search-icon"></i></a>
+  </div>
+
+  <div class="d-inline-block marR16" [ngClass]="{ 'ml-auto': !isViewSmall }" ngbDropdown
+    *ngIf="!showSearchInputInSmallDevices">
+    <a href="javascript:void(0)" *ngIf="currentlyLoggedInUser?.username" ngbDropdownToggle id="notifications"
+      class="d-inline-block DSA_mainactiveLink cursor-pointer" aria-label="notification"
+      (click)='markNotificationsIconAsRead()'>
+      <i class="icon x-24 white notification-icon relative">
+        <i class="DSA_notIndicator" *ngIf='notificationList.length !== 0 && !notificationsRead'></i>
+      </i>
+    </a>
+    <div ngbDropdownMenu aria-labelledby="notification" class="notifications-list nopadTB">
+      <div class="padT8 d-flex justify-content-center">
+        <mat-chip class="DSA_wb_chipStyle-Normal DSA_choiseChip d-flex align-items-center"
+          [ngClass]='{"web-SecondaryGreen": currentlyLoggedInUser?.notification_subscription, "web-SecondaryRed": !currentlyLoggedInUser?.notification_subscription}'
+          disableRipple="true">Push Notifications&nbsp;&nbsp;
+          <mat-slide-toggle class="DSA_Wb_custom-slideToggle enable-pointer-events nomarTB nomarR marL8"
+            [(ngModel)]='currentlyLoggedInUser.notification_subscription'
+            (click)="togglePushNotificationSubscription()">
+          </mat-slide-toggle>
+        </mat-chip>
+      </div>
+      <hr class="marT8 nomarB">
+      <ul class="DSA_wb_normalListItem">
+        <li *ngIf='notificationList.length === 0' class="padTB8 web-GreyDarkest padLR16 disable-pointer-events">
+
+          <div class="DSA_wb_mainBodyTxt2SM">
+            No notifications
+          </div>
+        </li>
+        <ng-container *ngFor='let notification of notificationList; last as isLast'>
+          <li class="padTB16 cursor-pointer padLR16"
+            (click)='notification.notificationStatus = notificationStatusEnumValues.seen; markNotificationAsRead(notification?.id!, notification?.topicId!, notification?.notificationType!)'
+            [ngClass]='{
+              "web-SecondaryBlue": (notification?.notificationType === "REPLIED" && notification?.notificationStatus !== notificationStatusEnumValues.seen) || (notification?.notificationType === "EDITED" && notification?.notificationStatus !== notificationStatusEnumValues.seen),
+              "web-SecondaryRed": (notification?.notificationType === "DELETED" && notification?.notificationStatus !== notificationStatusEnumValues.seen) || (notification?.notificationType === "HIDDEN" && notification?.notificationStatus !== notificationStatusEnumValues.seen),
+              "web-SecondaryGreen": notification?.notificationType === "UNHIDE" && notification?.notificationStatus !== notificationStatusEnumValues.seen,
+              "SecondaryBlue": (notification?.notificationType === "REPLIED" && notification?.notificationStatus === notificationStatusEnumValues.seen) || (notification?.notificationType === "EDITED" && notification?.notificationStatus === notificationStatusEnumValues.seen),
+              "SecondaryRed": (notification?.notificationType === "DELETED" && notification?.notificationStatus === notificationStatusEnumValues.seen) || (notification?.notificationType === "HIDDEN" && notification?.notificationStatus === notificationStatusEnumValues.seen),
+              "SecondaryGreen": notification?.notificationType === "UNHIDE" && notification?.notificationStatus === notificationStatusEnumValues.seen
+              }'>
+            <div class="d-flex align-items-center">
+              <div class="inline-block padR16">
+                <i class="icon x-16" [ngClass]='{
+                "forward-icon reverse-icon": notification?.notificationType === "REPLIED",
+                "delete-sm-icon": notification?.notificationType === "DELETED",
+                "hide-icon": notification?.notificationType === "HIDDEN",
+                "show-icon green": notification?.notificationType === "UNHIDE",
+                "edit-icon": notification?.notificationType === "EDITED",
+                "blue": notification?.notificationType === "REPLIED" || notification?.notificationType === "EDITED",
+                "red": notification?.notificationType === "HIDDEN" || notification?.notificationType === "DELETED"
+                }'>
+                </i>
+              </div>
+              <div class="inline-block">
+                <div class="DSA_wb_mainBodyTxt2SM">
+                  {{notification?.title}}
+                </div>
+                <div class="padT4 DSA_wb_mainBodyTxt2" *ngIf='notification?.text?.length !== 0'>
+                  {{notification?.text}}
+                </div>
+              </div>
+            </div>
+          </li>
+          <hr class="nomarTB" *ngIf='!isLast' />
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+
+  <div class="profile" ngbDropdown *ngIf="!showSearchInputInSmallDevices">
+    <ngx-avatar [name]="currentlyLoggedInUser?.username!" [size]="30" [round]="true" class="cursor-pointer"
+      id="OverflowMenu_dd" ngbDropdownToggle aria-label="overflow menu">
+    </ngx-avatar>
+    <div ngbDropdownMenu aria-labelledby="OverflowMenu_dd">
+      <ul class="DSA_wb_normalListItem">
+        <li [routerLink]="['/user-profile']">
+          <a href="javascript:void(0);">
+            <h2 class="DSA_wb_mainBodyTxt web-GreyDarkest DSA_wb_text-1line custom-list-h2">
+              <i class="icon x-16 personal-icon purple marR8 iconinline"> </i>
+              User Profile
+            </h2>
+          </a>
+        </li>
+        <li [routerLink]="['/categories']" *jhiHasAnyAuthority="'ROLE_ADMIN'">
+          <a href="javascript:void(0);">
+            <h2 class="DSA_wb_mainBodyTxt web-GreyDarkest DSA_wb_text-1line custom-list-h2">
+              <i class="icon x-16 icon_grid_view marR8 purple iconinline"> </i>
+              Categories
+            </h2>
+          </a>
+        </li>
+        <li (click)="logout()">
+          <a href="javascript:void(0);">
+            <h2 class="DSA_wb_mainBodyTxt web-GreyDarkest DSA_wb_text-1line custom-list-h2">
+              <i class="icon x-16 upload-icon marR8 red iconinline custom-log-out-icon"> </i>
+              Log Out
+            </h2>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<ng-template #searchResultsTemplate>
+  <div class="search-results padTB4" (click)="$event.stopPropagation()" [ngClass]="{ 'w-100': isViewSmall }">
+    <ng-container *ngFor="let result of searchByTitleResults; last as isLast">
+      <div (click)="navigateToTopic(result.id!)" class="padTB4 padLR16 cursor-pointer">
+        <div class="DSA_wb_mainBodyTxt result-title">{{ result.title }}</div>
+      </div>
+      <hr *ngIf="!isLast" class="marTB4" />
+    </ng-container>
+    <hr *ngIf="searchByTitleResults.length > 0 && searchByTagsResults.length > 0" />
+    <div class="padTB8 padLR16 black-color-text" *ngIf="searchByTagsResults.length > 0">Search as tags:</div>
+    <ng-container *ngFor="let result of searchByTagsResults; last as isLast">
+      <div (click)="navigateToTopic(result.id!)" class="padTB4 padLR16 cursor-pointer">
+        <div class="DSA_wb_mainBodyTxt result-title">{{ result.title }}</div>
+      </div>
+      <hr *ngIf="!isLast" class="marTB4" />
+    </ng-container>
+  </div>
+</ng-template>
+
+<jhi-loader></jhi-loader>

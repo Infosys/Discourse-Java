@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2021 Infosys Ltd.
+  ~ Use of this source code is governed by GNU General Public License version 2
+  ~ that can be found in the LICENSE file or at
+  ~ https://opensource.org/licenses/GPL-2.0
+  -->
+
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <!--
+        Added the entity Groups.
+    -->
+    <changeSet id="20210524115039-1" author="jhipster">
+        <createTable tableName="groups">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="automatic" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="user_count" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="automatic_membership_email_domains" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="primary_group" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="grant_trust_level" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="incoming_email" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="has_messages" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="flair_url" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="flair_bg_color" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="flair_color" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="bio_raw" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="bio_cooked" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="allow_membership_requests" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="full_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="default_notification_level" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="visibility_level" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="public_exit" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="public_admission" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="membership_request_template" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="messageable_level" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="mentionable_level" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="smtp_server" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="smtp_port" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="smtp_ssl" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="imap_server" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="imap_port" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="imap_ssl" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="imap_mailbox_name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="imap_uid_validity" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="imap_last_uid" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="email_username" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="email_password" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="publish_read_state" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="members_visibility_level" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="imap_last_error" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="imap_old_emails" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="imap_new_emails" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="flair_icon" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="flair_upload_id" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="allow_unknown_sender_topic_replies" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20210524115039-1-relations" author="jhipster">
+
+    </changeSet>
+
+    <!-- Added the entity audit columns -->
+    <changeSet id="20210524111121-audit-1" author="jhipster-entity-audit">
+        <addColumn tableName="groups">
+            <column name="created_by" type="varchar(50)" defaultValue="system">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" defaultValueDate="${now}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="varchar(50)"/>
+            <column name="last_modified_date" type="timestamp"/>
+        </addColumn>
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20210524115039-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/groups.csv"
+                  separator=";"
+                  tableName="groups">
+            <column name="id" type="numeric"/>
+            <column name="name" type="string"/>
+            <column name="automatic" type="boolean"/>
+            <column name="user_count" type="numeric"/>
+            <column name="automatic_membership_email_domains" type="string"/>
+            <column name="primary_group" type="boolean"/>
+            <column name="title" type="string"/>
+            <column name="grant_trust_level" type="numeric"/>
+            <column name="incoming_email" type="string"/>
+            <column name="has_messages" type="boolean"/>
+            <column name="flair_url" type="string"/>
+            <column name="flair_bg_color" type="string"/>
+            <column name="flair_color" type="string"/>
+            <column name="bio_raw" type="string"/>
+            <column name="bio_cooked" type="string"/>
+            <column name="allow_membership_requests" type="boolean"/>
+            <column name="full_name" type="string"/>
+            <column name="default_notification_level" type="numeric"/>
+            <column name="visibility_level" type="numeric"/>
+            <column name="public_exit" type="boolean"/>
+            <column name="public_admission" type="boolean"/>
+            <column name="membership_request_template" type="string"/>
+            <column name="messageable_level" type="numeric"/>
+            <column name="mentionable_level" type="numeric"/>
+            <column name="smtp_server" type="string"/>
+            <column name="smtp_port" type="numeric"/>
+            <column name="smtp_ssl" type="boolean"/>
+            <column name="imap_server" type="string"/>
+            <column name="imap_port" type="numeric"/>
+            <column name="imap_ssl" type="boolean"/>
+            <column name="imap_mailbox_name" type="string"/>
+            <column name="imap_uid_validity" type="numeric"/>
+            <column name="imap_last_uid" type="numeric"/>
+            <column name="email_username" type="string"/>
+            <column name="email_password" type="string"/>
+            <column name="publish_read_state" type="boolean"/>
+            <column name="members_visibility_level" type="numeric"/>
+            <column name="imap_last_error" type="string"/>
+            <column name="imap_old_emails" type="numeric"/>
+            <column name="imap_new_emails" type="numeric"/>
+            <column name="flair_icon" type="string"/>
+            <column name="flair_upload_id" type="numeric"/>
+            <column name="allow_unknown_sender_topic_replies" type="boolean"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

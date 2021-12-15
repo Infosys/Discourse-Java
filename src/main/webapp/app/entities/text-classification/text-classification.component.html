@@ -1,0 +1,92 @@
+<!--
+  ~ Copyright 2021 Infosys Ltd.
+  ~ Use of this source code is governed by GNU General Public License version 2
+  ~ that can be found in the LICENSE file or at
+  ~ https://opensource.org/licenses/GPL-2.0
+  -->
+
+<div>
+    <h2 id="page-heading">
+        <span>Text Classifications</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-text-classification" [routerLink]="['/text-classification/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Text Classification
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="textClassifications?.length === 0">
+        <span>No textClassifications found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="textClassifications && textClassifications.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="contentId"><span>Content Id</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="toxicity"><span>Toxicity</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="severeToxicity"><span>Severe Toxicity</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="obscene"><span>Obscene</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="threat"><span>Threat</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="insult"><span>Insult</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="identityHate"><span>Identity Hate</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="type"><span>Type</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let textClassification of textClassifications ;trackBy: trackId">
+                    <td><a [routerLink]="['/text-classification', textClassification.id, 'view']">{{ textClassification.id }}</a></td>
+                    <td>{{ textClassification.contentId }}</td>
+                    <td>{{ textClassification.toxicity }}</td>
+                    <td>{{ textClassification.severeToxicity }}</td>
+                    <td>{{ textClassification.obscene }}</td>
+                    <td>{{ textClassification.threat }}</td>
+                    <td>{{ textClassification.insult }}</td>
+                    <td>{{ textClassification.identityHate }}</td>
+                    <td>{{ textClassification.type }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/text-classification', textClassification.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/text-classification', textClassification.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(textClassification)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="textClassifications && textClassifications.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

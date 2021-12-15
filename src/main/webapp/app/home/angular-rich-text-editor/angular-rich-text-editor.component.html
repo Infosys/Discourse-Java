@@ -1,0 +1,103 @@
+<!--
+  ~ Copyright 2021 Infosys Ltd.
+  ~ Use of this source code is governed by GNU General Public License version 2
+  ~ that can be found in the LICENSE file or at
+  ~ https://opensource.org/licenses/GPL-2.0
+  -->
+
+<div class="DSA_panel main-container panel-min-height" *ngIf="showEditor">
+  <div class="DSA_panelBody pad16 panel-min-height">
+    <div class="d-flex" *ngIf='currentlyLoggedInUser?.admin && enableAnnouncement'>
+      <mat-chip class="DSA_wb_chipStyle-Normal DSA_choiseChip ml-auto d-flex align-items-center" disableRipple="true"
+        [ngClass]='{"web-SecondaryGreen": announcementFlag, "web-SecondaryBlue": !announcementFlag}'>
+        Announcement
+        <mat-slide-toggle class="DSA_Wb_custom-slideToggle d-inline-block nomarB" [(ngModel)]='announcementFlag'
+          disableRipple="true" labelPosition="before">
+        </mat-slide-toggle>
+      </mat-chip>
+    </div>
+    <div class="editor-container">
+      <div *ngIf="topicConfig.heading?.length !== 0" class="padB16">
+        {{ topicConfig.heading }}
+      </div>
+      <div class="row marNLR8" *ngIf="topicConfig.editorType === richTextEditorType.TOPIC ||
+          topicConfig.editorType === richTextEditorType.EDIT_TOPIC_DISABLE_RTE">
+        <div class="col-12 col-md-6 padLR8">
+          <mat-form-field class="DSA_Wb_custom-form-field">
+            <mat-label>Title</mat-label>
+            <input matInput [(ngModel)]='topicConfig.values!.title' (ngModelChange)='search()' />
+          </mat-form-field>
+          <div class="search-results padTB4" (click)="$event.stopPropagation()"
+            *ngIf='searchResults.length > 0 && showSearchResultBox && !announcementFlag'>
+            <div class="padLR16 padT4 padB8">Related topics:
+              <i class="icon x-16 close-icon iconinline float-right cursor-pointer" (click)='hideSearchResults()'> </i>
+            </div>
+            <ng-container *ngFor='let result of searchResults; last as isLast'>
+              <div (click)='navigateToTopic(result.id!)' class="padTB4 padLR16 cursor-pointer">
+                <div class="DSA_wb_mainBodyTxt result-title">{{result.title}}</div>
+              </div>
+              <hr *ngIf='!isLast' class="marTB4">
+            </ng-container>
+          </div>
+        </div>
+        <div class="col-12 col-md-3 padLR8" *ngIf='!announcementFlag'>
+          <mat-form-field class="custom-select-withBg w-100">
+            <mat-label>Category</mat-label>
+            <mat-select [(ngModel)]='topicConfig.values!.categoryId' disableOptionCentering
+              panelClass="DSA_wb-custom-select">
+              <mat-option *ngFor="let category of categories" [value]="category.id">
+                {{ category.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-md-3 padLR8" *ngIf='!announcementFlag'>
+          <mat-form-field class="DSA_Wb_custom-form-field">
+            <mat-label>Comma separated tags</mat-label>
+            <input matInput [(ngModel)]='topicConfig.values!.tags' />
+          </mat-form-field>
+          <!--- <mat-form-field class="custom-select-withBg w-100">
+            <mat-label>Tags</mat-label>
+
+             <mat-chip-list #chipList>
+              <mat-chip class="DSA_wb_chipStyle-Normal DSA_wb_chip-input marR16" disableRipple="true"
+                *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable" (removed)="remove(tag)">
+                {{ tag }}
+                <i matChipRemove class="icon x-16 icon-close-mini DSA_wb_chipIconRight" *ngIf="removable"></i>
+              </mat-chip>
+              <input placeholder="New tag..." [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="
+                  separatorKeysCodes
+                " [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)" />
+            </mat-chip-list>
+
+            <mat-select [(ngModel)]='topicConfig.values!.tags' disableOptionCentering panelClass="DSA_wb-custom-select">
+              <mat-option *ngFor="let tag of tags" [value]="tag">
+                {{tag}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field> -->
+        </div>
+      </div>
+      <div class="row marNLR8"
+        *ngIf="topicConfig.editorType === richTextEditorType.TOPIC || topicConfig.editorType === richTextEditorType.REPLY">
+        <div class="col-12 col-md-6 marB16 padLR8">
+          <angular-editor [(ngModel)]='topicConfig.values!.htmlContent' [config]="editorConfig"></angular-editor>
+        </div>
+        <div class="col-12 col-md-6 marB16 padLR8 d-flex">
+          <div *ngIf='topicConfig.values!.htmlContent!.length !== 0'
+            [innerHtml]='topicConfig.values!.htmlContent! | safeHtml' class="previewContent pad16 mt-auto w-100">
+          </div>
+          <div *ngIf='topicConfig.values!.htmlContent!.length === 0'
+            class="preview-placeholder previewContent pad16 mt-auto w-100">
+            <span class="placeholder-text">Preview</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="nomarT">
+    <button mat-flat-button class="DSA_wb_miniSecondary-btn d-inline" (click)="submit()">
+      {{ topicConfig.submitButtonText}}
+    </button>
+    <button mat-flat-button class="DSA_wb_text-btn d-inline marL16" (click)="closeEditor()">Close</button>
+  </div>
+</div>

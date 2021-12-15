@@ -1,0 +1,156 @@
+/*
+* Copyright (C) 2019 - 2020 Infosys Limited, Bangalore, India. All Rights Reserved.  
+* Version:1.0.0 alpha
+* Except for any free or open source software components embedded in
+* this Infosys proprietary software program ("Program"), this Program is protected
+* by copyright laws, international treaties and other pending or existing
+* intellectual property rights in India, the United States and other countries.
+* Except as expressly permitted, any unauthorized reproduction, storage,
+* transmission in any form or by any means (including without limitation
+* electronic, mechanical, printing, photocopying, recording or otherwise), or any
+* distribution of this Program, or any portion of it, may result in severe civil
+* and criminal penalties, and will be prosecuted to the maximum extent possible
+* under the law.
+*/
+
+/*Button styles */
+@mixin btn-styles {
+  font-size: $text-md;
+  font-weight: 500;
+  font-style: normal;
+  text-transform: uppercase;
+  font-family: $base-font;
+  border: 1px solid transparent;
+  padding: 8px 16px !important;
+  line-height: 16px !important;
+  background: none;
+}
+
+@mixin btn-styles-web {
+  font-size: $size-text-16;
+  font-weight: 700;
+  font-style: normal;
+  text-transform: capitalize;
+  font-family: $font-style-2;
+  border: 1px solid transparent;
+  padding: 11px 40px 10px !important;
+  line-height: 16px !important;
+  background: none;
+}
+
+@mixin innerBtn-styles-web {
+  font-size: $size-text-14;
+  font-weight: 700;
+  font-style: normal;
+  text-transform: capitalize;
+  font-family: $font-style-2;
+  border: 1px solid transparent;
+  padding: 8px !important;
+  line-height: 14px !important;
+  background: none;
+  border-radius: 16px !important;
+}
+
+@mixin miniBtn-styles-web {
+  font-size: $size-text-12;
+  font-weight: 700;
+  font-style: normal;
+  font-family: $font-style-2;
+  padding: 5px 28px 5px !important;
+  line-height: 14px !important;
+  background: none;
+  border-radius: 4px !important;
+}
+
+/* card styles*/
+@mixin card-styles {
+  display: block;
+  position: relative;
+  padding: 16px;
+  border-radius: 4px;
+}
+
+/**/
+@mixin verticalCenter {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+/* icon circle*/
+@mixin icon-circle {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 8px;
+  background-repeat: no-repeat !important;
+  background-position: 50% 50% !important;
+}
+@mixin icon-circle-large {
+  width: 56px;
+  height: 56px;
+  display: inline-block;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  background-repeat: no-repeat !important;
+  background-position: 50% 50% !important;
+}
+@mixin icon-circle-small {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 4px;
+  background-repeat: no-repeat !important;
+  background-position: 50% 50% !important;
+}
+
+/* Transition */
+@mixin transition($what: all, $time: 0.2s, $how: ease-in-out) {
+  -webkit-transition: $what $time $how;
+  -moz-transition: $what $time $how;
+  -ms-transition: $what $time $how;
+  -o-transition: $what $time $how;
+  transition: $what $time $how;
+}
+
+/* Transform */
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+/* rotate */
+@mixin rotate($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
+
+/* scale */
+@mixin scale($scale) {
+  @include transform(scale($scale));
+}
+/* translate */
+@mixin translate($x, $y) {
+  @include transform(translate($x, $y));
+}
+/* skew */
+@mixin skew($x, $y) {
+  @include transform(skew(#{$x}deg, #{$y}deg));
+}
+/* transform origin */
+@mixin transform-origin($origin) {
+  moz-transform-origin: $origin;
+  -o-transform-origin: $origin;
+  -ms-transform-origin: $origin;
+  -webkit-transform-origin: $origin;
+  transform-origin: $origin;
+}

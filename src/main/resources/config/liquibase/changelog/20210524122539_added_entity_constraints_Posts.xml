@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2021 Infosys Ltd.
+  ~ Use of this source code is governed by GNU General Public License version 2
+  ~ that can be found in the LICENSE file or at
+  ~ https://opensource.org/licenses/GPL-2.0
+  -->
+
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity Posts.
+    -->
+    <changeSet id="20210524122539-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="polls_id"
+                                 baseTableName="posts"
+                                 constraintName="fk_posts_polls_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="polls"/>
+
+    </changeSet>
+</databaseChangeLog>

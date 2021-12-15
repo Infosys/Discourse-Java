@@ -1,0 +1,202 @@
+{
+  "name": "Groups",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "automatic",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "userCount",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "automaticMembershipEmailDomains",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "primaryGroup",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "grantTrustLevel",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "incomingEmail",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "hasMessages",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "flairUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "flairBgColor",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "flairColor",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bioRaw",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bioCooked",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "allowMembershipRequests",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fullName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "defaultNotificationLevel",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "visibilityLevel",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "publicExit",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "publicAdmission",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "membershipRequestTemplate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "messageableLevel",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "mentionableLevel",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "smtpServer",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "smtpPort",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "smtpSsl",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "imapServer",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "imapPort",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "imapSsl",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "imapMailboxName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "imapUidValidity",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "imapLastUid",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "emailUsername",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "emailPassword",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "publishReadState",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "membersVisibilityLevel",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "imapLastError",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "imapOldEmails",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "imapNewEmails",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "flairIcon",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "flairUploadId",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "allowUnknownSenderTopicReplies",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20210524115039",
+  "entityTableName": "groups",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "enableEntityAudit": true
+}

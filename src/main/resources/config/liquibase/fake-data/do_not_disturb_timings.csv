@@ -1,0 +1,11 @@
+id;user_id;starts_at;ends_at;scheduled
+1;experiences Martinique;2021-05-23T16:54:32;2021-05-23T19:07:31;true
+2;action-items;2021-05-24T04:12:49;2021-05-24T06:57:59;false
+3;Avenue scalable;2021-05-24T05:50:35;2021-05-23T16:51:31;true
+4;Philippine Peso magenta Loop;2021-05-24T07:45:41;2021-05-24T11:25:06;true
+5;Computers;2021-05-24T06:39:28;2021-05-23T14:51:04;false
+6;Centers;2021-05-23T12:28:53;2021-05-24T04:47:07;true
+7;Computer Tunnel Bedfordshire;2021-05-23T14:19:01;2021-05-23T11:58:49;false
+8;RAM;2021-05-23T22:52:14;2021-05-23T15:50:07;true
+9;multi-byte XSS;2021-05-24T08:53:48;2021-05-24T11:09:56;false
+10;Auto Loan Account;2021-05-24T05:50:34;2021-05-24T07:55:27;true

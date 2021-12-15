@@ -1,0 +1,39 @@
+{
+  "name": "ThemeModifierSets",
+  "fields": [
+    {
+      "fieldName": "themeId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "serializeTopicExcerpts",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "cspExtensions",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "svgIcons",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "topicThumbnailSizes",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20210524125539",
+  "entityTableName": "theme_modifier_sets",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "enableEntityAudit": true
+}

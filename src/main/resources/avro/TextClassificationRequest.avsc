@@ -1,0 +1,10 @@
+{
+   "namespace": "com.infy.avroschema",
+   "type": "record",
+   "name": "TextClassificationRequest",
+   "fields": [
+		{ "name": "id", "type": ["null", "long"],"default": null },
+        { "name": "type", "type": ["null", "string"],"default": null},
+        { "name": "content", "type": ["null", "string"],"default": null }
+   ]
+}

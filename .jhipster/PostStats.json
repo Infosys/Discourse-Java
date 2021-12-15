@@ -1,0 +1,34 @@
+{
+  "name": "PostStats",
+  "fields": [
+    {
+      "fieldName": "postId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "draftsSaved",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "typingDurationMsecs",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "composerOpenDurationMsecs",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20210524122239",
+  "entityTableName": "post_stats",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "enableEntityAudit": true
+}

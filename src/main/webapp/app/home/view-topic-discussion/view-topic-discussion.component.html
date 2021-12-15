@@ -1,0 +1,275 @@
+<!--
+  ~ Copyright 2021 Infosys Ltd.
+  ~ Use of this source code is governed by GNU General Public License version 2
+  ~ that can be found in the LICENSE file or at
+  ~ https://opensource.org/licenses/GPL-2.0
+  -->
+
+<div class="d-flex marB16">
+  <mat-chip class="DSA_wb_chipStyle-Normal DSA_choiseChip sorting-select ml-auto web-SecondaryBlue" disableRipple="true"
+    (click)='openSortingMatSelect()' [formGroup]='sorting'>
+    Sort By:&nbsp;&nbsp;
+    <mat-select formControlName='sorting' (selectionChange)="sort()" disableOptionCentering
+      panelClass="DSA_wb-custom-select" #sortingSelector>
+      <mat-option *ngFor="let sortingType of sortingTypes" [value]="sortingType?.value">
+        {{ sortingType?.type }}
+      </mat-option>
+    </mat-select>
+  </mat-chip>
+  <a href="javascript:void(0);" class="purpleIcon-Circle marL16 icon-anchor_size-32"
+    *ngIf='currentlyLoggedInUser?.admin && !showTickCloseForAdmin' (click)="openModal(adminActions)">
+    <i class="icon x-24 white icon_setting"> </i>
+  </a>
+  <a href="javascript:void(0);" class="purpleIcon-Circle marL16 icon-anchor_size-32"
+    *ngIf='currentlyLoggedInUser?.admin && showTickCloseForAdmin' (click)='hideUnhidePosts()'>
+    <i class="icon x-16 white icon-tick-dark"> </i>
+  </a>
+  <a href="javascript:void(0);" class="redIcon-Circle marL16 icon-anchor_size-32"
+    *ngIf='currentlyLoggedInUser?.admin && showTickCloseForAdmin' (click)='cancelHideUnhide()'>
+    <i class="icon x-16 white close-icon"> </i>
+  </a>
+</div>
+<h1 class="DSA_wb_h1Header">
+  {{ topic?.name }}
+  <!-- <i class="icon x-24 blue edit-icon iconinline cursor-pointer marL8" (click)='intialiseTitleEditAndCategory()'> </i> -->
+  <div class="d-inline-block" *ngIf='currentlyLoggedInUser?.user_id === topic?.user_id || currentlyLoggedInUser?.admin'>
+    <a href="javascript:void(0);"
+      class="whiteIcon-Circle h-24 w-24 marL8 d-flex align-items-center nopadT edit-icon-anchor no-box-shadow"
+      (click)='intialiseTitleEditAndCategory()'>
+      <i class="icon x-16 purple edit-icon iconinline cursor-pointer"> </i>
+    </a>
+  </div>
+</h1>
+<div class="marTB8 marNLR4">
+  <span class="marLR4">
+    <jhi-category [categoryId]="topic?.category_id!"></jhi-category>
+  </span>
+  <div class="d-inline-block">
+    <span class="DSA_wb_chipStyle DSA_wb_bluechip text-nowrap marLR4">Created At: {{topic?.created_at! | date}}</span>
+    <span class="DSA_wb_chipStyle DSA_wb_bluechip text-nowrap marLR4">Last Reply: {{topic?.last_posted_at! |
+      date}}</span>
+    <span class="DSA_wb_chipStyle DSA_wb_bluechip text-nowrap marLR4">
+      {{topic?.post_number! -1 >= 0 ? topic?.post_number! -1 : 0}}&nbsp;{{topic?.post_number! - 1 > 1 ? 'Replies' : 'Reply'}}
+    </span>
+    <span class="DSA_wb_chipStyle DSA_wb_bluechip text-nowrap marLR4">
+      {{topic?.like_count}}&nbsp;{{topic?.like_count! > 1 ? 'Likes' : 'Like'}}
+    </span>
+  </div>
+</div>
+<div class="DSA_panel">
+  <div class="DSA_panelBody padTB16 padLR16">
+    <div class="d-flex align-items-center">
+      <ngx-avatar [name]="topicPrimaryPost?.username" [size]="32" [round]="true"></ngx-avatar>
+      <span class="marL16 marTB16 DSA_wb_mainBodyTxtSM">
+        {{ topicPrimaryPost?.username }}
+      </span>
+      <!-- <i class="icon x-16 blue edit-icon ml-auto iconinline nomarTB nomarR cursor-pointer edit-post-icon"
+    (click)='initialiseTopicPrimaryPostEdit()'> </i> -->
+      <a href="javascript:void(0);"
+        class="whiteIcon-Circle h-24 w-24 ml-auto d-flex align-items-center nopadT edit-icon-anchor no-box-shadow"
+        *ngIf='currentlyLoggedInUser?.user_id === topicPrimaryPost?.user_id || currentlyLoggedInUser?.admin'
+        (click)='initialiseTopicPrimaryPostEdit()'>
+        <i class="icon x-16 purple edit-icon iconinline cursor-pointer"> </i>
+      </a>
+    </div>
+    <div [innerHtml]="topicPrimaryPost?.cooked! | safeHtml"
+      class="marL48 break-word-word-wrap overflow-x-auto overflow-y-hidden">
+    </div>
+    <div class="marT16 marL48" *ngIf='topic?.tags?.length !== 0'>
+      <span *ngFor='let tag of tags' class="tag marR8 padLR4 nopadTB">{{tag.trim()}}</span>
+    </div>
+    <div class="d-flex marT16 align-items-center">
+      <!-- Like button: -->
+      <div class="ml-auto">
+        <mat-chip class="DSA_wb_chipStyle-Normal DSA_choiseChip d-flex align-items-center padR4 marR8 no-box-shadow"
+          *ngIf='!(currentlyLoggedInUser?.user_id === topicPrimaryPost?.user_id && topicPrimaryPost?.like_count === 0)'
+          [ngClass]='{"like_chip-liked": topicPrimaryPost?.current_user_like,
+          "like_chip-notLiked": !topicPrimaryPost?.current_user_like,
+          "padL8": topicPrimaryPost?.like_count !== 0,
+          "border-none padL4": topicPrimaryPost?.like_count === 0,
+          "disable-pointer-events": currentlyLoggedInUser?.user_id === topicPrimaryPost?.user_id}'
+          (click)='likeUnlikePost(currentlyLoggedInUser?.user_id === topicPrimaryPost?.user_id,topicPrimaryPost?.id!, !topicPrimaryPost?.current_user_like!)'
+          disableRipple="true">
+          <span *ngIf='topicPrimaryPost?.like_count !== 0'>{{topicPrimaryPost?.like_count}}&nbsp;&nbsp;</span>
+          <a href="javascript:void(0);" class="d-flex align-items-center h-24 w-24 nopadT no-box-shadow"
+            [ngClass]='{"purpleIcon-Circle": topicPrimaryPost?.current_user_like, "whiteIcon-Circle": !topicPrimaryPost?.current_user_like}'>
+            <i class="icon x-16 icon-like"
+              [ngClass]='{"white": topicPrimaryPost?.current_user_like, "purple": !topicPrimaryPost?.current_user_like}'>
+            </i>
+          </a>
+        </mat-chip>
+      </div>
+      <!-- <button mat-flat-button class="DSA_wb_Icon-btn" (click)='initialiseCreatePostForTopic()'>
+            <span class="icon_btnCont"><i class="icon x-16 purple forward-icon reverse-icon"> </i></span>
+            <span class="icon-btn-txt"> Reply </span>
+            </button> -->
+      <mat-chip
+        class="no-box-shadow DSA_wb_chipStyle-Normal DSA_choiseChip d-flex align-items-center padLR8 reply-button"
+        disableRipple="true" (click)='initialiseCreatePostForTopic()'>
+        <i class="icon x-16 purple forward-icon reverse-icon marR8"> </i>
+        Reply
+      </mat-chip>
+    </div>
+  </div>
+</div>
+<hr />
+<div style="margin-left:-16px;">
+  <ng-container
+    *ngTemplateOutlet="showReplies; context: { posts: posts, parent: parentValueJsonForNestedPosts.topic, parentId: '-1' }">
+  </ng-container>
+</div>
+
+
+<!-- Template for nested replies -->
+<ng-template #showReplies let-posts="posts" let-parent='parent' let-parentId='parentId'>
+  <div [ngClass]='{"replies": parentId !== "-1" }'>
+    <ng-container *ngFor="let post of posts; let i = index; last as isLast">
+      <div class="padL16" *ngIf='post?.id !== topicPrimaryPost?.id'>
+        <div class="d-flex align-items-center">
+          <mat-checkbox class="DSA_Wb_custom-checkbox" aria-label="checkbox" disableRipple="true"
+            [checked]="hideUnhidePostsIdsSet.has(post?.id)" (change)='selectHideUnhideChange($event.checked, post?.id)'
+            *ngIf='(showCheckboxesForHiding && !post?.hidden) || (showCheckboxesForUnhiding && post?.hidden)'>
+          </mat-checkbox>
+          <ngx-avatar [name]="post?.username" [size]="32" [round]="true"
+            *ngIf='(!showCheckboxesForHiding && !showCheckboxesForUnhiding) || (showCheckboxesForHiding && post?.hidden) || (showCheckboxesForUnhiding && !post?.hidden)'>
+          </ngx-avatar>
+          <span class="marL16 marTB16 DSA_wb_mainBodyTxtSM">
+            {{ post?.username! }}
+          </span>
+          <span class="DSA_wb_chipStyle DSA_wb_openchip marL8" *ngIf='post?.hidden'>Hidden</span><br />
+          <a href="javascript:void(0);"
+            class="whiteIcon-Circle h-24 w-24 ml-auto d-flex align-items-center nopadT edit-icon-anchor no-box-shadow"
+            *ngIf='currentlyLoggedInUser?.user_id === post?.user_id || currentlyLoggedInUser?.admin'
+            (click)='initialisePostEdit(i, post.id, parent, parentId)'>
+            <i class="icon x-16 purple edit-icon iconinline cursor-pointer"> </i>
+          </a>
+          <a href="javascript:void(0);"
+            class="whiteIcon-Circle h-24 w-24 ml-auto d-flex align-items-center nopadT delete-icon-anchor marL8 no-box-shadow"
+            *ngIf='currentlyLoggedInUser?.user_id === post?.user_id || currentlyLoggedInUser?.admin'
+            (click)='openModal(deletePostTemplate, post?.id)'>
+            <i class="icon x-16 red delete-sm-icon iconinline cursor-pointer"> </i>
+          </a>
+          <!-- <i class="icon x-16 blue edit-icon ml-auto iconinline nomarTB nomarR cursor-pointer edit-post-icon"
+            (click)='initialisePostEdit(i, post.id, parent, parentId)'> </i> -->
+        </div>
+        <div [innerHtml]="post?.cooked! | safeHtml"
+          class="marL48 break-word-word-wrap overflow-x-auto overflow-y-hidden"></div>
+        <div class="marL48 marTB16 d-flex align-items-center">
+          <mat-chip class="DSA_wb_chipStyle-Normal DSA_choiseChip d-flex align-items-center padLR8 no-box-shadow"
+            [ngClass]='{"view-reply_active": repliesJson[post.id]?.showReplies, "view-reply_inactive": !repliesJson[post.id]?.showReplies}'
+            *ngIf="post.reply_count !== 0" (click)='viewReplies(post.id)' disableRipple="true">
+            {{ post?.reply_count }} {{ post.reply_count === 1 ? 'Reply' : 'Replies' }}
+            <i class="icon x-16 iconinline marL8"
+              [ngClass]='{"up-arw-icon white":repliesJson[post.id]?.showReplies, "down-arw-icon purple": !repliesJson[post.id]?.showReplies}'>
+            </i>
+          </mat-chip>
+          <!-- <button class="DSA_wb_text-btn marNL16" *ngIf="post.reply_count !== 0" (click)='viewReplies(post.id)'>
+            View {{ post?.reply_count }} {{ post.reply_count === 1 ? 'Reply' : 'Replies' }}
+            <span>
+              <i class="icon x-16 up-arw-icon iconinline purple" *ngIf='repliesJson[post.id]?.showReplies'> </i>
+              <i class="icon x-16 down-arw-icon iconinline purple" *ngIf='!repliesJson[post.id]?.showReplies'> </i>
+            </span>
+          </button> -->
+          <!-- Like button: -->
+          <div class="ml-auto" *ngIf='!post?.hidden'>
+            <mat-chip class="DSA_wb_chipStyle-Normal DSA_choiseChip d-flex align-items-center padR4 marR8 no-box-shadow"
+              *ngIf='!(currentlyLoggedInUser?.user_id === post?.user_id && post?.like_count === 0)' [ngClass]='{"like_chip-liked": post?.current_user_like,
+              "like_chip-notLiked": !post?.current_user_like,
+              "padL8": post?.like_count !== 0,
+              "border-none padL4": post?.like_count === 0,
+              "disable-pointer-events":currentlyLoggedInUser?.user_id === post?.user_id}'
+              (click)='likeUnlikePost(currentlyLoggedInUser?.user_id === post?.user_id, post?.id!, !post?.current_user_like!, i, parentId)'
+              disableRipple="true">
+              <span *ngIf='post?.like_count !== 0'>{{post?.like_count}}&nbsp;&nbsp;</span>
+              <a href="javascript:void(0);" class="d-flex align-items-center h-24 w-24 nopadT no-box-shadow"
+                [ngClass]='{"purpleIcon-Circle": post?.current_user_like, "whiteIcon-Circle": !post?.current_user_like}'>
+                <i class="icon x-16 icon-like"
+                  [ngClass]='{"white": post?.current_user_like, "purple": !post?.current_user_like}'>
+                </i>
+              </a>
+            </mat-chip>
+            <!-- <a href="javascript:void(0);" class="whiteIcon-Circle"> <i class="icon x-24 white icon-tick-dark "> </i> </a> -->
+          </div>
+          <div *ngIf='!post?.hidden'>
+            <!-- <button mat-flat-button class="DSA_wb_Icon-btn"
+              (click)='initialiseReplyToPost(i, post.id, parent, parentId)'>
+              <span class="icon_btnCont"><i class="icon x-16 purple forward-icon reverse-icon"> </i></span>
+              <span class="icon-btn-txt"> Reply </span>
+            </button> -->
+            <mat-chip
+              class="DSA_wb_chipStyle-Normal DSA_choiseChip d-flex align-items-center padLR8 reply-button no-box-shadow"
+              disableRipple="true" (click)='initialiseReplyToPost(i, post.id, parent, parentId)'>
+              <i class="icon x-16 purple forward-icon reverse-icon marR8"> </i>
+              Reply
+            </mat-chip>
+          </div>
+        </div>
+        <ng-container *ngIf="repliesJson[post.id]?.showReplies">
+          <ng-container
+            *ngTemplateOutlet="showReplies; context: { posts: repliesJson[post.id]?.replies, parent: parentValueJsonForNestedPosts.post, parentId: post.id }">
+          </ng-container>
+        </ng-container>
+        <hr *ngIf="!isLast" />
+      </div>
+    </ng-container>
+  </div>
+</ng-template>
+
+<!-- Admin Actions -->
+<ng-template #adminActions let-modal>
+  <div class="modal-header nopadTB nopadLR">
+    <h4 class="DSA_wb_h2Header float-left" id="modalTitle">Admin Actions</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <i class="icon x-16 close-icon"> </i>
+    </button>
+  </div>
+  <hr class="w-100">
+  <div class="modal-body nopadTB nopadLR overflow-y-auto">
+    <ul class="DSA_wb_normalListItem">
+      <li (click)='initialiseHideUnhidePosts(true)'>
+        <a href="javascript:void(0);">
+          <h2
+            class="DSA_wb_mainBodyTxt web-GreyDarkest DSA_wb_text-1line d-flex align-items-center justify-content-center">
+            <i class="icon x-16 hide-icon iconinline red nomarTB nomarL marR8"> </i>Hide posts
+          </h2>
+        </a>
+      </li>
+      <li (click)='initialiseHideUnhidePosts(false)'>
+        <a href="javascript:void(0);">
+          <h2
+            class="DSA_wb_mainBodyTxt web-GreyDarkest DSA_wb_text-1line d-flex align-items-center justify-content-center">
+            <i class="icon x-16 show-icon iconinline purple nomarTB nomarL marR8"> </i>Unhide posts
+          </h2>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <hr class="w-100">
+  <div class="modal-footer nopadTB nopadLR">
+    <button class="DSA_wb_miniPrimary-btn ml-auto" mat-flat-button (click)="modal.dismiss('Cross click')">Close</button>
+  </div>
+</ng-template>
+
+<!-- Modal for deletion -->
+<ng-template #deletePostTemplate let-modal>
+  <div class="modal-header">
+    <h4 class="DSA_wb_h2Header float-left" id="modalTitle">Delete post</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <i class="icon x-16 close-icon"> </i>
+    </button>
+  </div>
+  <div class="modal-body">
+    Are you sure you want to delete this post?
+  </div>
+  <div class="modal-footer">
+    <button class="DSA_wb_miniSecondary-btn ml-auto" mat-flat-button (click)="modal.dismiss('Cross click')">No</button>
+    <button class="DSA_wb_miniPrimary-btn marL16" (click)="deletePost()" mat-flat-button>Yes</button>
+  </div>
+</ng-template>
+
+<!-- Custom component for using angular rich text editor -->
+<jhi-angular-rich-text-editor (onSubmitClick)='submitEditorContent($event)' [(showEditor)]='showEditor'
+  [topicConfig]='richTextEditorConfig'>
+</jhi-angular-rich-text-editor>
+
+<jhi-loader></jhi-loader>

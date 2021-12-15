@@ -1,0 +1,242 @@
+{
+  "name": "Categories",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "color",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "topicId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "topicCount",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "userId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "topicsYear",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "topicsMonth",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "topicsWeek",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "slug",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "textColor",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "readRestricted",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "autoCloseHours",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "postCount",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "latestPostId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "latestTopicId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "position",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "parentCategoryId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "postsYear",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "postsMonth",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "postsWeek",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "emailIn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "emailInAllowStrangers",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "topicsDay",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "postsDay",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "allowBadges",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nameLower",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "autoCloseBasedOnLastPost",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "topicTemplate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "containsMessages",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "sortOrder",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sortAscending",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "uploadedLogoId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "uploadedBackgroundId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "topicFeaturedLinkAllowed",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "allTopicsWiki",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "showSubcategoryList",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "numFeaturedTopics",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "defaultView",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "subcategoryListStyle",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "defaultTopPeriod",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "mailinglistMirror",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "minimumRequiredTags",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "navigateToFirstPostAfterRead",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "searchPriority",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "allowGlobalTags",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "reviewableByGroupId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "requiredTagGroupId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "minTagsFromRequiredGroup",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "readOnlyBanner",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "defaultListFilter",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "allowUnlimitedOwnerEditsOnFirstPost",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20210524111739",
+  "entityTableName": "categories",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "enableEntityAudit": true
+}

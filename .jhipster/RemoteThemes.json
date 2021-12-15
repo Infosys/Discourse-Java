@@ -1,0 +1,75 @@
+{
+  "name": "RemoteThemes",
+  "fields": [
+    {
+      "fieldName": "remoteUrl",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "remoteVersion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "localVersion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "aboutUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "licenseUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "commitsBehind",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "remoteUpdatedAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "privateKey",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "branch",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastErrorText",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "authors",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "themeVersion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "minimumDiscourseVersion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "maximumDiscourseVersion",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20210524122939",
+  "entityTableName": "remote_themes",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "enableEntityAudit": true
+}

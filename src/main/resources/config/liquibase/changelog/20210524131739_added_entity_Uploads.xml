@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2021 Infosys Ltd.
+  ~ Use of this source code is governed by GNU General Public License version 2
+  ~ that can be found in the LICENSE file or at
+  ~ https://opensource.org/licenses/GPL-2.0
+  -->
+
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <!--
+        Added the entity Uploads.
+    -->
+    <changeSet id="20210524131739-1" author="jhipster">
+        <createTable tableName="uploads">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="original_filename" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="filesize" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="width" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="height" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="url" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="sha_1" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="origin" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="retain_hours" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="extension" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="thumbnail_width" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="thumbnail_height" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="etag" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="secure" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="access_control_post_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="original_sha_1" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="animated" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="verified" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="verification_status" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="security_last_changed_at" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="security_last_changed_reason" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="user_profiles_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="uploads" columnName="security_last_changed_at" columnDataType="datetime"/>
+    </changeSet>
+
+    <changeSet id="20210524131739-1-relations" author="jhipster">
+
+    </changeSet>
+
+    <!-- Added the entity audit columns -->
+    <changeSet id="20210524111121-audit-1" author="jhipster-entity-audit">
+        <addColumn tableName="uploads">
+            <column name="created_by" type="varchar(50)" defaultValue="system">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" defaultValueDate="${now}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="varchar(50)"/>
+            <column name="last_modified_date" type="timestamp"/>
+        </addColumn>
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20210524131739-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/uploads.csv"
+                  separator=";"
+                  tableName="uploads">
+            <column name="id" type="numeric"/>
+            <column name="user_id" type="string"/>
+            <column name="original_filename" type="string"/>
+            <column name="filesize" type="numeric"/>
+            <column name="width" type="numeric"/>
+            <column name="height" type="numeric"/>
+            <column name="url" type="string"/>
+            <column name="sha_1" type="string"/>
+            <column name="origin" type="string"/>
+            <column name="retain_hours" type="numeric"/>
+            <column name="extension" type="string"/>
+            <column name="thumbnail_width" type="numeric"/>
+            <column name="thumbnail_height" type="numeric"/>
+            <column name="etag" type="string"/>
+            <column name="secure" type="boolean"/>
+            <column name="access_control_post_id" type="numeric"/>
+            <column name="original_sha_1" type="string"/>
+            <column name="animated" type="boolean"/>
+            <column name="verified" type="boolean"/>
+            <column name="verification_status" type="numeric"/>
+            <column name="security_last_changed_at" type="datetime"/>
+            <column name="security_last_changed_reason" type="string"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

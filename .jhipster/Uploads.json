@@ -1,0 +1,116 @@
+{
+  "name": "Uploads",
+  "fields": [
+    {
+      "fieldName": "userId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "originalFilename",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "filesize",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "width",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "height",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "url",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "sha1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "origin",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "retainHours",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "extension",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "thumbnailWidth",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "thumbnailHeight",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "etag",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "secure",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "accessControlPostId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "originalSha1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "animated",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "verified",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "verificationStatus",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "securityLastChangedAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "securityLastChangedReason",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "userProfiles",
+      "otherEntityRelationshipName": "uploads",
+      "relationshipName": "userProfiles",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210524131739",
+  "entityTableName": "uploads",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "enableEntityAudit": true
+}

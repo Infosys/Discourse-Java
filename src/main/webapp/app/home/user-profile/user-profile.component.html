@@ -1,0 +1,208 @@
+<!--
+  ~ Copyright 2021 Infosys Ltd.
+  ~ Use of this source code is governed by GNU General Public License version 2
+  ~ that can be found in the LICENSE file or at
+  ~ https://opensource.org/licenses/GPL-2.0
+  -->
+
+<div class="d-flex align-items-center marT24 padB16">
+  <div class="d-inline-block marB8">
+    <ngx-avatar [name]="currentlyLoggedInUser.name" [size]="55" [round]="true" class="marL16"></ngx-avatar>
+  </div>
+  <div class="d-inline-block marL16">
+    <div class="marT8 DSA_wb_h1Header" style="font-size: large">
+      {{ currentlyLoggedInUser.name }}
+    </div>
+    <div class="marNLR4">
+      <div class="d-inline-block padLR4 marT16">
+        <mat-chip class="d-inline-block DSA_wb_chipStyle-Normal DSA_choiseChip select-chip h-50" disableRipple="true"
+          [ngClass]="{ 'web-SecondaryBlue disable-pointer-events': selectedIndex === 0 }" (click)="showActivity(0)">
+          Topics</mat-chip>
+      </div>
+      <div class="d-inline-block padLR4 marT16">
+        <mat-chip class="d-inline-block DSA_wb_chipStyle-Normal DSA_choiseChip select-chip h-50" disableRipple="true"
+          [ngClass]="{ 'web-SecondaryBlue disable-pointer-events': selectedIndex === 1 }" (click)="showActivity(1)">
+          Replies</mat-chip>
+      </div>
+      <div class="d-inline-block padLR4 marT16">
+        <mat-chip class="d-inline-block DSA_wb_chipStyle-Normal DSA_choiseChip select-chip h-50" disableRipple="true"
+          [ngClass]="{ 'web-SecondaryBlue disable-pointer-events': selectedIndex === 2 }" (click)="showActivity(2)">
+          Likes</mat-chip>
+      </div>
+      <div class="d-inline-block padLR4 marT16">
+        <mat-chip class="d-inline-block DSA_wb_chipStyle-Normal DSA_choiseChip select-chip h-50" disableRipple="true"
+          [ngClass]="{ 'web-SecondaryBlue disable-pointer-events': selectedIndex === 3 }" (click)="showActivity(3)">
+          Hidden</mat-chip>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- <div class="marTB24 row">
+  <ngx-avatar [name]="'J B'" [size]="50" [round]="true" class="marL16"></ngx-avatar>
+  <div class="marL8 marT8 DSA_wb_h1Header" style="font-size: large">{{ username }}</div>
+</div> -->
+
+<!-- <div class="d-inline-block">
+  <div class="d-inline-block padLR4 marB16 marT16 marL8">
+    <mat-chip class="DSA_wb_chipStyle-Normal DSA_choiseChip web-SecondaryBlue disable-pointer-events h-50 d-flex align-items-center" disableRipple="true"> Activity</mat-chip>
+  </div>
+</div> -->
+<!-- <div class="row nomarT" >
+        <div class="col-md-2 col-sm-2" >
+          <nav class="DSA_navHideMenu" id="" >
+            <ul class="DSA_wb_listItemSingle marT24 DSA_frstLevel">
+              <li *ngFor="let column of displayOptions; let i = index" (click)="setActiveCls($event, i)" class="h-65 cursor-pointer" style=" text-align:center;">
+                <a href="javascript:void(0);" class="nopadLR" style="height: 100%">
+                  <div class="DSA_wb_h2HeaderRegular web-GreyLight padB8" style="margin-top: 13px">{{ column }}</div>
+                </a>
+
+              </li>
+            </ul>
+          </nav>
+        </div> -->
+<div class="marT24 overflow-y-auto">
+  <!-- <jhi-home *ngIf="selectedIndex===0"></jhi-home> -->
+  <!-- <div class="DSA_panel" *ngFor="let topic of topicList">
+            <div class="DSA_panelBody padTB16 padLR24">
+              <div class="row">
+
+              </div>
+            </div>
+            </div> -->
+
+  <table class="DSA_wb_custom-table" *ngIf="selectedIndex === 0 && topicList.length !== 0">
+    <thead>
+      <tr>
+        <th *ngFor="let column of displayColumn">{{ column }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let topic of topicList" class="padTB16 cursor-pointer" (click)="viewTopicDiscussion(topic.id!)">
+        <td>
+          <div class="DSA_wb_mainBodyTxt">
+            {{ topic?.name }}
+          </div>
+          <jhi-category [categoryId]="topic?.category_id"></jhi-category>
+        </td>
+        <td>
+          <div class="d-flex align-items-center marTB8 nomarL">
+            <ngx-avatar [name]="topic?.username" [size]="35" [round]="true" class="marL0"></ngx-avatar>
+          </div>
+        </td>
+        <td>{{ topic?.post_number }}</td>
+
+        <td>{{ topic?.created_at | date }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="selectedIndex === 0 && topicList.length === 0">
+    <h1 class="DSA_wb_h1Header overflow-y-hidden">No topics found</h1>
+  </div>
+
+  <table class="DSA_wb_custom-table" *ngIf="selectedIndex === 1 && posts.length !== 0">
+    <tbody>
+      <tr *ngFor="let post of posts" class="padTB16 cursor-pointer" (click)="viewTopicDiscussion(post.topic_id!)">
+        <td>
+          <div class="d-inline-block padTB8 nomarL">
+            <div class="d-flex align-items-center">
+              <div class="d-flex align-items-center marTB8 nomarL">
+                <ngx-avatar [name]="post?.username" [size]="45" [round]="true" class="marL0"></ngx-avatar>
+              </div>
+              <div class="marL8">
+                <div class="padB8">
+                  <span class="DSA_wb_mainBodyTxt" style="white-space: normal !important">
+                    {{ post?.topic_slug }}
+                  </span>
+                </div>
+                <jhi-category [categoryId]="post?.category_id"></jhi-category>
+                <!-- <div class="d-inline-block icon-div marR8" [ngStyle]="{ background: post?.color }"></div> -->
+                <div class="DSA_wb_mainBodyTxt2 d-inline text-nowrap">
+                  {{ categoryList[post.categoryId]?.name! | titlecase }}
+                </div>
+              </div>
+            </div>
+            <div class="marT8" [innerHtml]='post?.cooked'>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="selectedIndex === 1 && posts.length === 0">
+    <h1 class="DSA_wb_h1Header overflow-y-hidden">No replies found</h1>
+  </div>
+
+  <table class="DSA_wb_custom-table" *ngIf="selectedIndex === 2 && likedPost.length !== 0">
+    <tbody class="marL8">
+      <tr *ngFor="let post of likedPost" class="padTB16 cursor-pointer" (click)="viewTopicDiscussion(post.topic_id!)">
+        <td>
+          <div class="d-inline-block padTB8">
+            <div class="d-flex align-items-center">
+              <div class="d-flex align-items-center marTB8">
+                <ngx-avatar [name]="post?.username" [size]="45" [round]="true" class="marL0"></ngx-avatar>
+              </div>
+              <div class="marL8">
+                <div class="padB8">
+                  <span class="DSA_wb_mainBodyTxt" style="white-space: normal !important">
+                    {{ post?.topic_slug }}
+                  </span>
+                </div>
+                <jhi-category [categoryId]="post?.category_id"></jhi-category>
+                <div class="d-inline-block icon-div marR8" [ngStyle]="{ background: post?.color }"></div>
+                <div class="DSA_wb_mainBodyTxt2 d-inline text-nowrap">
+                  {{ categoryList[post.categoryId]?.name! | titlecase }}
+                </div>
+              </div>
+            </div>
+            <div class="marT8" [innerHtml]='post?.cooked'>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="selectedIndex === 2 && likedPost.length === 0">
+    <h1 class="DSA_wb_h1Header overflow-y-hidden">No liked posts found</h1>
+  </div>
+
+  <!-- hidden posts -->
+  <table class="DSA_wb_custom-table" *ngIf="selectedIndex === 3 && hiddenPost.length !== 0">
+    <tbody class="marL8">
+      <tr *ngFor="let post of hiddenPost" class="padTB16 cursor-pointer" (click)="viewTopicDiscussion(post.topic_id!)">
+        <td>
+          <div class="d-inline-block padTB8">
+            <div class="d-flex align-items-center">
+              <div class="d-flex align-items-center marTB8">
+                <ngx-avatar [name]="post?.username" [size]="45" [round]="true" class="marL0"></ngx-avatar>
+              </div>
+              <div class="marL8">
+                <div class="padB8">
+                  <span class="DSA_wb_mainBodyTxt" style="white-space: normal !important">
+                    {{ post?.topic_slug }}
+                  </span>
+                </div>
+                <jhi-category [categoryId]="post?.category_id"></jhi-category>
+                <div class="d-inline-block icon-div marR8" [ngStyle]="{ background: post?.color }"></div>
+                <div class="DSA_wb_mainBodyTxt2 d-inline text-nowrap">
+                  {{ categoryList[post.categoryId]?.name! | titlecase }}
+                </div>
+              </div>
+            </div>
+            <div class="marT8" [innerHtml]='post?.cooked'>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="selectedIndex === 3 && hiddenPost.length === 0">
+    <h1 class="DSA_wb_h1Header overflow-y-hidden">No hidden posts found</h1>
+  </div>
+</div>
+
+<jhi-loader></jhi-loader>

@@ -1,0 +1,177 @@
+{
+  "name": "UserOptions",
+  "fields": [
+    {
+      "fieldName": "userId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "mailingListMode",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "emailDigests",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "externalLinksInNewTab",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "enableQuoting",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dynamicFavicon",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "disableJumpReply",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "automaticallyUnpinTopics",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "digestAfterMinutes",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "autoTrackTopicsAfterMsecs",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "newTopicDurationMinutes",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "lastRedirectedToTopAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "emailPreviousReplies",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "emailInReplyTo",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "likeNotificationFrequency",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "mailingListModeFrequency",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "includeTl0InDigests",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "notificationLevelWhenReplying",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "themeKeySeq",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "allowPrivateMessages",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "homepageId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "themeIds",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "hideProfileAndPresence",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "textSizeKey",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "textSizeSeq",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "emailLevel",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "emailMessagesLevel",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "titleCountModeKey",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "enableDefer",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "timezone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "enableAllowedPmUsers",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "darkSchemeId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "skipNewUserTips",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "colorSchemeId",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20210524133639",
+  "entityTableName": "user_options",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "enableEntityAudit": true
+}

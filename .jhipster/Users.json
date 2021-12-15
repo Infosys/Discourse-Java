@@ -1,0 +1,172 @@
+{
+  "name": "Users",
+  "fields": [
+    {
+      "fieldName": "username",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "seenNotificationId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastPostedAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "passwordHash",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "salt",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "active",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "usernameLower",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastSeenAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "admin",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastEmailedAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "trustLevel",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "approved",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "approvedById",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "approvedAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "previousVisitAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "suspendedAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "suspendedTill",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "dateOfBirth",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "views",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "flagLevel",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ipAddress",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "moderator",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "uploadedAvatarId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "locale",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "primaryGroupId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "registrationIpAddress",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "staged",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "firstSeenAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "silencedTill",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "groupLockedTrustLevel",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "manualLockedTrustLevel",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "secureIdentifier",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "userSecurityKeys",
+      "otherEntityRelationshipName": "users",
+      "relationshipName": "userSecurityKeys",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210524134639",
+  "entityTableName": "users",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "enableEntityAudit": true
+}

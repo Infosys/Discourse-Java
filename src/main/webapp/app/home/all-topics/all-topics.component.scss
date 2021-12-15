@@ -1,0 +1,60 @@
+.select-chip {
+  text-overflow: ellipsis !important;
+  overflow: hidden !important;
+  width: 200px !important;
+  white-space: nowrap !important;
+  display: flex !important;
+  align-items: center !important;
+  ::ng-deep .mat-select-value-text {
+    font-size: initial !important;
+  }
+}
+
+.h-40 {
+  height: 40px !important;
+}
+
+.create-chip-plus-icon {
+  background: white;
+  border-radius: 16px;
+  height: 24px;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.width50 {
+  width: 50%;
+}
+
+.category-border-left {
+  border-left-style: solid;
+  border-left-width: 8px;
+}
+.topic-count {
+  font-weight: 700px;
+  font-size: large;
+  color: grey;
+}
+.category-description {
+  color: grey;
+}
+
+.icon-div {
+  height: 8px;
+  width: 8px;
+}
+
+.max-width_65vw {
+  max-width: 65vw;
+}
+
+.div:focus-visible,
+.mat-chip:focus-visible {
+  outline: none !important;
+}
+
+.announcement:hover {
+  color: blue;
+}

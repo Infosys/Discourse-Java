@@ -1,0 +1,65 @@
+/*
+* Copyright (C) 2019 - 2020 Infosys Limited, Bangalore, India. All Rights Reserved.  
+* Version:1.0.0 alpha
+* Except for any free or open source software components embedded in
+* this Infosys proprietary software program ("Program"), this Program is protected
+* by copyright laws, international treaties and other pending or existing
+* intellectual property rights in India, the United States and other countries.
+* Except as expressly permitted, any unauthorized reproduction, storage,
+* transmission in any form or by any means (including without limitation
+* electronic, mechanical, printing, photocopying, recording or otherwise), or any
+* distribution of this Program, or any portion of it, may result in severe civil
+* and criminal penalties, and will be prosecuted to the maximum extent possible
+* under the law.
+*/
+
+.app-loading {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  position: relative;
+  color: red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  top: 10em;
+}
+.common {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: consolas;
+}
+.body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: rgba(248, 248, 248, 0.4);
+}
+.wavy {
+  position: relative;
+  -webkit-box-reflect: below -12px linear-gradient(transparent, rgba(0, 0, 0, 0.2));
+}
+.wavy .common {
+  position: relative;
+  display: inline-block;
+  color: #8626c3;
+  font-size: 2em;
+  font-weight: bolder;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-transform: uppercase;
+  animation: animate 1.5s ease-in-out infinite;
+  animation-delay: calc(0.1s * var(--i));
+}
+@keyframes animate {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  20% {
+    transform: translateY(-20px);
+  }
+  40% {
+    transform: translateY(0px);
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "UserAvatars",
+  "fields": [
+    {
+      "fieldName": "userId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "customUploadId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "gravatarUploadId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "lastGravatarDownloadAttempt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "updatedAt",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20210524132539",
+  "entityTableName": "user_avatars",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "enableEntityAudit": true
+}

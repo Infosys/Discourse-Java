@@ -1,0 +1,425 @@
+/*
+* Copyright (C) 2019 - 2020 Infosys Limited, Bangalore, India. All Rights Reserved.  
+* Version:1.0.0 alpha
+* Except for any free or open source software components embedded in
+* this Infosys proprietary software program ("Program"), this Program is protected
+* by copyright laws, international treaties and other pending or existing
+* intellectual property rights in India, the United States and other countries.
+* Except as expressly permitted, any unauthorized reproduction, storage,
+* transmission in any form or by any means (including without limitation
+* electronic, mechanical, printing, photocopying, recording or otherwise), or any
+* distribution of this Program, or any portion of it, may result in severe civil
+* and criminal penalties, and will be prosecuted to the maximum extent possible
+* under the law.
+*/
+
+/*icon round*/
+.avatarImageCircle {
+  @include icon-circle;
+  padding-top: 0;
+}
+
+.greyIcon-Circle {
+  @include icon-circle;
+  background: $bg-neutral-50;
+}
+
+.whiteIcon-Circle {
+  @include icon-circle;
+  @extend %default-shadow;
+  background: $bg-white;
+}
+
+.whiteIcon-Circle-small {
+  @include icon-circle-small;
+  @extend %default-shadow;
+  background: $bg-white;
+}
+
+.whiteIconNoshadow-Circle {
+  @include icon-circle;
+  background: $bg-white;
+}
+
+.badgeIcon-Circle {
+  @include icon-circle;
+  @extend %default-shadow;
+  width: 56px;
+  height: 56px;
+  background: $bg-white;
+  padding-top: 10px;
+  position: relative;
+  .notifications {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    top: 0px;
+    right: 0px;
+    font-size: 10px;
+    position: absolute;
+    display: block;
+  }
+}
+
+.disabledIcon-Circle {
+  @include icon-circle;
+  @extend %default-shadow;
+  background: $bg-white;
+}
+
+.disabledIcon-Circle i,
+.disabledIcon {
+  opacity: 0.2;
+}
+
+.purpleIcon-Circle {
+  @include icon-circle;
+  background: $bg-primary-80;
+}
+
+.redIcon-Circle {
+  @include icon-circle;
+  background: red;
+}
+
+.purpleIconActive-Circle {
+  @include icon-circle;
+  @extend %active-shadow;
+  background: $bg-primary-80;
+}
+
+.DSA_tabIcon-Circle {
+  @include icon-circle;
+  background: transparent;
+  border: 1px solid $bg-white;
+}
+
+.circle24 {
+  width: 24px;
+  height: 24px;
+}
+.circle24 .icon {
+  margin-top: -4px;
+}
+
+/*logo*/
+.infy-logo-light {
+  width: 66px;
+  height: 24px;
+}
+
+.infy-me-logo {
+  width: 95px;
+  height: 40px;
+  font-size: 40px;
+}
+
+/* Icon Styles Begin */
+.icon-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.icon-list li {
+  display: inline-block;
+  padding: 1rem;
+  text-align: center;
+  background: $bg-neutral-30;
+  margin: 0.5rem;
+  min-height: 130px;
+  vertical-align: top;
+}
+
+.icon-list.doc_icon-list {
+  li {
+    width: calc(100% / 8);
+    min-height: 85px;
+    background: $bg-white;
+    .icon_name {
+      color: $icon-black;
+      margin: 8px 0 0;
+      font-size: $size-text-12;
+      font-weight: $font-400;
+      font-family: $font-style-1;
+      font-style: normal;
+    }
+    .html_code,
+    .html_unicode {
+      color: $icon-black;
+      margin: 8px 0 0;
+      font-size: $size-text-14;
+      font-weight: $font-400;
+      font-family: $font-style-1;
+      font-style: normal;
+    }
+  }
+}
+.iconScrollLi {
+  position: relative;
+}
+.iconCodeview {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 8px 8px 16px 8px;
+  bottom: 100%;
+  z-index: 2;
+  background: $bg-white;
+  @extend %raised-shadow;
+  margin: 4px;
+}
+.iconCodeview:after,
+.iconCodeview:before {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  position: absolute;
+  bottom: -8px;
+  left: 46%;
+  content: '';
+}
+.iconCodeview:after {
+  border-top: 10px solid $bg-white;
+}
+.iconCodeview:before {
+  border-top: 10px solid $bg-neutral-50;
+  bottom: -10px;
+}
+.icon-list li.active {
+  border: 1px solid $bg-primary-80;
+  .icon_name,
+  > .icon {
+    /*color:$icon-primary-80;*/
+  }
+}
+.icon-list li.active .iconCodeview {
+  display: block;
+}
+@media screen and (max-width: 1366px) {
+  .icon-list.doc_icon-list {
+    li {
+      width: calc(100% / 6);
+    }
+  }
+}
+
+.w-grid-8-l {
+  width: calc(100% / 7);
+}
+
+.icon {
+  display: block;
+  background-repeat: no-repeat !important;
+  margin: auto;
+  color: $icon-neutral-80;
+}
+
+.iconinline {
+  display: inline-block;
+}
+
+.icon.blue {
+  color: $icon-status-informtion;
+}
+
+.icon.purple {
+  color: $icon-primary-80;
+}
+
+.icon.white {
+  color: $icon-white;
+}
+
+.icon.red {
+  color: $icon-status-error;
+}
+.icon.yellow {
+  color: $icon-status-warning;
+}
+.icon.lightyellow {
+  color: $icon-status-warning;
+}
+
+.icon.black {
+  color: $icon-black;
+}
+
+.icon.dark-purple {
+  color: $icon-primary-100;
+}
+
+.icon.red {
+  color: $icon-status-error;
+}
+
+.icon.green {
+  color: $icon-status-success;
+}
+
+i {
+  font-style: normal;
+}
+
+/*icon position*/
+.icon.left {
+  background-position: left center;
+}
+
+.icon.right {
+  background-position: right center;
+}
+
+.icon.left8 {
+  background-position: 8px 50%;
+}
+
+.icon.right8 {
+  background-position: right 8px center;
+}
+
+.icon.left16 {
+  background-position: 16px 50%;
+}
+
+.icon.right16 {
+  background-position: right 16px center;
+  &:before {
+    position: absolute;
+    right: 16px;
+  }
+}
+
+.icon.center {
+  background-position: center center;
+}
+
+.botRight {
+  background-position: right 10px bottom 6px;
+}
+.x-8 {
+  width: 8px;
+  height: 8px;
+  font-size: 8px;
+}
+.x-16 {
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+}
+.x-20 {
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+}
+
+.x-24 {
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+}
+
+.x-32 {
+  width: 32px;
+  height: 32px;
+  font-size: 32px;
+}
+
+.x-48 {
+  width: 48px;
+  height: 48px;
+  font-size: 48px;
+}
+
+.x-56 {
+  width: 56px;
+  height: 56px;
+  font-size: 56px;
+}
+.x-64 {
+  width: 64px;
+  height: 64px;
+  font-size: 64px;
+}
+.noWdth {
+  width: auto;
+}
+
+code {
+  display: block;
+  color: $icon-black !important;
+  text-align: left;
+  margin-top: 10px;
+}
+
+ul.icon-list.white-bg li {
+  background: $bg-black;
+  code {
+    color: $icon-white !important;
+  }
+}
+
+a.icon:hover,
+a:hover {
+  text-decoration: none;
+}
+
+.icon.icon-close-mini {
+  font-size: 10px;
+  padding: 3px;
+}
+.icon-process-complete {
+  color: $icon-status-success;
+}
+.icon-inprogressBlue {
+  color: $icon-status-informtion;
+}
+.icon-pending {
+  color: $icon-status-warning;
+}
+.icon-rejected {
+  color: $icon-neutral-80;
+}
+.error-icon {
+  color: $icon-status-error;
+}
+
+.smiley1-yellow-icon,
+.smiley2-yellow-icon,
+.smiley3-yellow-icon,
+.smiley4-yellow-icon,
+.smiley5-yellow-icon {
+  color: $icon-status-warning;
+}
+
+.smiley1-grey-icon,
+.smiley2-grey-icon,
+.smiley3-grey-icon,
+.smiley4-grey-icon,
+.smiley5-grey-icon {
+  color: $icon-neutral-80;
+}
+
+.tick-green-lg-icon {
+  color: $icon-status-success;
+}
+
+.icon_smiley.selected .default,
+.icon_smiley .yellow {
+  display: none;
+}
+
+.icon_smiley.selected .yellow {
+  display: block;
+}
+
+.icon_rating.selected .default,
+.icon_rating .purple {
+  display: none;
+}
+
+.icon_rating.selected .purple {
+  display: block;
+}

@@ -1,0 +1,26 @@
+{
+  "name": "InvitedGroups",
+  "fields": [
+    {
+      "fieldName": "groupId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "inviteId",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20210524115839",
+  "entityTableName": "invited_groups",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "enableEntityAudit": true
+}

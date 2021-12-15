@@ -1,0 +1,21 @@
+.marT127 {
+  margin-top: 127px;
+}
+.select-chip {
+  text-overflow: ellipsis !important;
+  overflow: hidden !important;
+
+  white-space: nowrap !important;
+  display: flex !important;
+  align-items: center !important;
+}
+.background-purple {
+  color: #8626c3;
+}
+
+.like_chip-liked:hover,
+.like_chip-liked:focus {
+  i {
+    color: white !important;
+  }
+}

@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2021 Infosys Ltd.
+  ~ Use of this source code is governed by GNU General Public License version 2
+  ~ that can be found in the LICENSE file or at
+  ~ https://opensource.org/licenses/GPL-2.0
+  -->
+
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <!--
+        Added the entity Posts.
+    -->
+    <changeSet id="20210524122539-1" author="jhipster">
+        <createTable tableName="posts">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="topic_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="post_number" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="raw" type="${clobType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="cooked" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="reply_to_post_number" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="reply_count" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="quote_count" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="deleted_at" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="off_topic_count" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="like_count" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="incoming_link_count" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="bookmark_count" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="score" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="reads" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="post_type" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="sort_order" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_editor_id" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="hidden" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="hidden_reason_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="notify_moderators_count" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="spam_count" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="illegal_count" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="inappropriate_count" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="last_version_at" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="user_deleted" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="reply_to_user_id" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="percent_rank" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="notify_user_count" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="like_score" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="deleted_by_id" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="edit_reason" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="word_count" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="version" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="cook_method" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="wiki" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="baked_at" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="baked_version" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="hidden_at" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="self_edits" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="reply_quoted" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="via_email" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="raw_email" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="public_version" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="action_code" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="locked_by_id" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="image_upload_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="polls_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="posts" columnName="deleted_at" columnDataType="datetime"/>
+        <dropDefaultValue tableName="posts" columnName="last_version_at" columnDataType="datetime"/>
+        <dropDefaultValue tableName="posts" columnName="baked_at" columnDataType="datetime"/>
+        <dropDefaultValue tableName="posts" columnName="hidden_at" columnDataType="datetime"/>
+    </changeSet>
+
+    <changeSet id="20210524122539-1-relations" author="jhipster">
+
+    </changeSet>
+
+    <!-- Added the entity audit columns -->
+    <changeSet id="20210524111121-audit-1" author="jhipster-entity-audit">
+        <addColumn tableName="posts">
+            <column name="created_by" type="varchar(50)" defaultValue="system">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" defaultValueDate="${now}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="varchar(50)"/>
+            <column name="last_modified_date" type="timestamp"/>
+        </addColumn>
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20210524122539-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/posts.csv"
+                  separator=";"
+                  tableName="posts">
+            <column name="id" type="numeric"/>
+            <column name="user_id" type="string"/>
+            <column name="topic_id" type="numeric"/>
+            <column name="post_number" type="numeric"/>
+            <column name="raw" type="clob"/>
+            <column name="cooked" type="string"/>
+            <column name="reply_to_post_number" type="numeric"/>
+            <column name="reply_count" type="numeric"/>
+            <column name="quote_count" type="numeric"/>
+            <column name="deleted_at" type="datetime"/>
+            <column name="off_topic_count" type="numeric"/>
+            <column name="like_count" type="numeric"/>
+            <column name="incoming_link_count" type="numeric"/>
+            <column name="bookmark_count" type="numeric"/>
+            <column name="score" type="numeric"/>
+            <column name="reads" type="numeric"/>
+            <column name="post_type" type="numeric"/>
+            <column name="sort_order" type="numeric"/>
+            <column name="last_editor_id" type="string"/>
+            <column name="hidden" type="boolean"/>
+            <column name="hidden_reason_id" type="numeric"/>
+            <column name="notify_moderators_count" type="numeric"/>
+            <column name="spam_count" type="numeric"/>
+            <column name="illegal_count" type="numeric"/>
+            <column name="inappropriate_count" type="numeric"/>
+            <column name="last_version_at" type="datetime"/>
+            <column name="user_deleted" type="boolean"/>
+            <column name="reply_to_user_id" type="string"/>
+            <column name="percent_rank" type="numeric"/>
+            <column name="notify_user_count" type="numeric"/>
+            <column name="like_score" type="numeric"/>
+            <column name="deleted_by_id" type="string"/>
+            <column name="edit_reason" type="string"/>
+            <column name="word_count" type="numeric"/>
+            <column name="version" type="numeric"/>
+            <column name="cook_method" type="numeric"/>
+            <column name="wiki" type="boolean"/>
+            <column name="baked_at" type="datetime"/>
+            <column name="baked_version" type="numeric"/>
+            <column name="hidden_at" type="datetime"/>
+            <column name="self_edits" type="numeric"/>
+            <column name="reply_quoted" type="boolean"/>
+            <column name="via_email" type="boolean"/>
+            <column name="raw_email" type="string"/>
+            <column name="public_version" type="numeric"/>
+            <column name="action_code" type="string"/>
+            <column name="locked_by_id" type="string"/>
+            <column name="image_upload_id" type="numeric"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

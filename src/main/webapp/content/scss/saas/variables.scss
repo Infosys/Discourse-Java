@@ -1,0 +1,271 @@
+/*
+* Copyright (C) 2019 - 2020 Infosys Limited, Bangalore, India. All Rights Reserved.  
+* Version:1.0.0 alpha
+* Except for any free or open source software components embedded in
+* this Infosys proprietary software program ("Program"), this Program is protected
+* by copyright laws, international treaties and other pending or existing
+* intellectual property rights in India, the United States and other countries.
+* Except as expressly permitted, any unauthorized reproduction, storage,
+* transmission in any form or by any means (including without limitation
+* electronic, mechanical, printing, photocopying, recording or otherwise), or any
+* distribution of this Program, or any portion of it, may result in severe civil
+* and criminal penalties, and will be prosecuted to the maximum extent possible
+* under the law.
+*/
+
+//
+// variables.scss
+//
+
+/* Heading or Title font sizes */
+$heading-lg: 3.2rem; //32px
+$heading-md: 2.4rem; //24px
+$heading-sm: 2rem; //20px
+
+/* Body text font sizes */
+$text-lg: 1.6rem; //16px
+$text-md: 1.4rem; //14px
+$text-sm: 1.2rem; //12px
+$text-xs: 1rem; //10px
+
+$text-body: 62.5%;
+
+/* Body text font weight */
+$text-bold: 700;
+$text-medium: 500;
+$text-regular: 400;
+
+/* Theme bg color */
+$bgcolor-thick: #5e1f89;
+$bgcolor-dark: #8626c3;
+/*$bgcolor-lighter:#AA59DD;*/
+$bgcolor-lightest: #edcfff;
+
+/* Secondary bg color */
+$bgcolor-green: #dff6dd;
+$bgcolor-red: #fde7e9;
+$bgcolor-blue: #deebff;
+/*$bgcolor-orange: #F7941E;*/
+$bgcolor-orange: #fff4ce;
+$bgcolor-black: #030303;
+$bgcolor-white: #ffffff;
+
+/* Grey bg color */
+$bggrey-dark: #212121;
+$bggrey-light: #737373;
+$bggrey-lighter: #dadada;
+$bggrey-lightest: #efefef;
+$bggrey-lightwhite: #fafafa;
+
+/* Theme text color */
+$color-thick: #5e1f89;
+$color-dark: #8626c3;
+/*$color-lighter:#AA59DD;*/
+$color-lightest: #edcfff;
+
+/* Secondary text color */
+$green-color: #00875a;
+$red-color: #de350b;
+$blue-color: #0052cc;
+$orange-color: #d47808;
+$black-color: #000000;
+$white-color: #ffffff;
+
+/* Grey text color */
+$grey-dark: #212121;
+$grey-light: #737373;
+$grey-lighter: #dadada;
+$grey-lightest: #efefef;
+$grey-lightwhite: #fafafa;
+
+/* Font declaration */
+$base-font: 'roboto', Arial !important;
+
+/* Extend/Inheritance box shadows */
+%mb-flat-shadow {
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.08) !important;
+}
+%mb-default-shadow {
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.16) !important;
+}
+%mb-raised-shadow {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.24) !important;
+}
+%mb-active-shadow {
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.24) !important;
+}
+%mb-rght-shadow {
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15) !important;
+}
+%mb-rght-shadow2 {
+  box-shadow: 2px -1px 2px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Web Heading or Title font sizes */
+
+$basefont-type: 'roboto', Arial !important;
+$font-style-1: 'roboto', Arial !important;
+$font-style-2: 'myriad-pro', Arial !important;
+
+$basefont-size: 62.5%;
+$baseBodyfont-size: 1.6rem;
+
+$size-hd-48: 4.8rem; //48px
+
+$size-hd-24: 2.4rem; //24px
+$size-hd-18: 1.8rem; //18px
+
+$size-hd-16: 1.6rem; //16px
+$size-hd-14: 1.4rem; //14px
+$size-hd-12: 1.2rem; //12px
+$size-hd-10: 1rem; //12px
+
+/* Web body text font sizes */
+$size-text-16: 1.6rem; //16px
+$size-text-14: 1.4rem; //14px
+$size-text-12: 1.2rem; //12px
+
+$size-text-10: 1rem; //10px
+
+/* Web button text font sizes */
+$size-button-18: 1.8rem; //18px
+$size-button-16: 1.6rem; //16px
+$size-button-14: 1.4rem; //14px
+$size-button-12: 1.2rem; //12px
+
+/* Web body text font weight */
+$font-700: 700;
+$font-500: 500;
+$font-400: 400;
+$font-600: 600;
+
+/*lineheight*/
+$line-height-10: 1rem;
+$line-height-12: 1.2rem;
+$line-height-14: 1.4rem;
+$line-height-16: 1.6rem;
+$line-height-18: 1.8rem;
+$line-height-24: 2.4rem;
+$line-height-48: 4.8rem;
+
+/*Web theme bg color*/
+$bg-primary-100: #5e1f89;
+$bg-primary-80: #8626c3;
+/*$bg-primary-50er:#AA59DD;*/
+$bg-primary-60: #edcfff;
+$bg-primary-50: #faf2ff;
+
+/* Web grey bg color */
+$bg-neutral-80: #737373;
+$bg-neutral-60: #b8b8b8;
+$bg-neutral-50: #dadada;
+$bg-neutral-40: #efefef;
+$bg-neutral-30: #fafafa;
+
+/* Web secondary bg color */
+$bg-status-success: #dff6dd;
+$bg-status-error: #fde7e9;
+$bg-status-informtion: #deebff;
+$bg-status-warning: #fff4ce;
+
+$bg-black: #000000;
+$bg-white: #ffffff;
+
+/* Web secondary Bg color */
+/*$wb-bg-green-color:#DFF6DD;
+$wb-bg-red-color:#FDE7E9;
+$wb-bg-blue-color:#DEEBFF;
+$wb-bg-orange-color:#FFF4CE ;*/
+
+/* Web theme text color */
+$text-primary-100: #5e1f89;
+$text-primary-80: #8626c3;
+/*$wb-color-lighter:#AA59DD;*/
+/*$wb-color-lightest:#EDCFFF;
+$wb-color-light: #FAF2FF; */
+
+/* Web secondary text color */
+$text-status-success: #00875a;
+$text-status-error: #de350b;
+$text-status-informtion: #0052cc;
+$text-status-warning: #d47808;
+
+/*$wb-lightorange-color:#FFCA28;*/
+
+$text-black: #000000;
+$text-white: #ffffff;
+
+/* Web grey text color */
+$text-neutral-90: #555555;
+$text-neutral-80: #737373;
+$text-neutral-60: #b8b8b8;
+$text-neutral-50: #dadada;
+/*$text-neutral-80est:#EFEFEF;
+$text-neutral-80white:#FAFAFA;*/
+
+/* Web icon color */
+$icon-primary-100: #5e1f89;
+$icon-primary-80: #8626c3;
+
+$icon-status-success: #00875a;
+$icon-status-error: #de350b;
+$icon-status-informtion: #0052cc;
+$icon-status-warning: #ff8800;
+/*$wb-iconcolor-lightOrange:#FFCA28;*/
+$icon-black: #000000;
+$icon-white: #ffffff;
+
+$icon-neutral-80: #737373;
+
+/*$wb-icongrey-midlight:#B8B8B8;
+$icon-neutral-80er:#DADADA;
+$icon-neutral-80est:#EFEFEF;
+$icon-neutral-80white:#FAFAFA;*/
+
+/*border color*/
+
+$border-neutral-40: #efefef;
+
+$border-radius-16: 16px;
+
+%flat-shadow {
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.08) !important;
+}
+%default-shadow {
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.16) !important;
+}
+%raised-shadow {
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.16) !important;
+}
+%active-shadow {
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.24) !important;
+}
+%hover-shadow {
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.32) !important;
+}
+%footer-shadow {
+  -webkit-box-shadow: 0px -2px 1px 0px rgba(204, 204, 204, 0.2);
+  -moz-box-shadow: 0px -2px 1px 0px rgba(204, 204, 204, 0.2);
+  box-shadow: 0px -2px 1px 0px rgba(204, 204, 204, 0.2);
+}
+%appmenu-shadow {
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15) !important;
+}
+%leftnav-shadow {
+  box-shadow: 1px -1px 4px 0px rgba(0, 0, 0, 0.16) !important;
+}
+%notification-shadow {
+  box-shadow: -1px -1px 4px 0px rgba(0, 0, 0, 0.16) !important;
+}
+%rightpanel-shadow {
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15) !important;
+}
+%default-shadow-01 {
+  box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.16) !important;
+}
+%carouselIcon-shadow {
+  box-shadow: -8px 0px 16px 0px rgba(0, 0, 0, 0.5) !important;
+}
+%flat-shadow-01 {
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.08) !important;
+}

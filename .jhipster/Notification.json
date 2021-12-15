@@ -1,0 +1,47 @@
+{
+    "name": "Notification",
+    "fields": [
+        {
+            "fieldName": "userId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "topicId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "postId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "text",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "seenAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "notificationStatus",
+            "fieldType": "NotificationStatus",
+            "fieldValues": "CREATED,SEEN"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20210603075336",
+    "entityTableName": "notification",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "enableEntityAudit": true
+}

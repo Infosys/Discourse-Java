@@ -1,0 +1,207 @@
+{
+  "name": "BadgePosts",
+  "fields": [
+    {
+      "fieldName": "userId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "topicId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "postNumber",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "raw",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "cooked",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "replyToPostNumber",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "replyCount",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "quoteCount",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "deletedAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "offTopicCount",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "likeCount",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "incomingLinkCount",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "bookmarkCount",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "score",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "reads",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "postType",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "sortOrder",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "lastEditorId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "hidden",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "hiddenReasonId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "notifyModeratorsCount",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "spamCount",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "illegalCount",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "inappropriateCount",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "lastVersionAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "userDeleted",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "replyToUserId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "percentRank",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "notifyUserCount",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "likeScore",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "deletedById",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "editReason",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "wordCount",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "version",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "cookMethod",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "wiki",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "bakedAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "bakedVersion",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "hiddenAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "selfEdits",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "replyQuoted",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "viaEmail",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "rawEmail",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "publicVersion",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "actionCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lockedById",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "imageUploadId",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20210524111339",
+  "entityTableName": "badge_posts",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "enableEntityAudit": true
+}

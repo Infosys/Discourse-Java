@@ -1,0 +1,55 @@
+.create-chip-plus-icon {
+  background: white;
+  border-radius: 16px;
+  height: 24px;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-area {
+  box-shadow: none;
+}
+
+.hide-mat-form-field {
+  .mat-form-field {
+    display: none !important;
+  }
+  ::ng-deep .mat-icon {
+    height: 64px !important;
+    width: 64px !important;
+    font-size: 64px !important;
+    display: inline-block;
+    margin-left: -10px !important;
+  }
+  ::ng-deep .mat-icon:focus {
+    outline: none !important;
+  }
+  ::ng-deep .mat-icon:active {
+    outline: none !important;
+  }
+  ::ng-deep .mat-icon-button:focus {
+    outline: none !important;
+  }
+  ::ng-deep .mat-button-focus-overlay {
+    display: none !important;
+  }
+  ::ng-deep .mat-ripple,
+  .mat-button-ripple,
+  .mat-button-ripple-round {
+    display: none !important;
+  }
+}
+
+.DSA_popoverCnt {
+  font-size: 1.5rem;
+}
+
+::ng-deep .DSA_modal-sm .modal-dialog {
+  min-width: auto !important;
+}
+
+.width-fit-content {
+  width: fit-content !important;
+}

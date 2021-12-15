@@ -1,0 +1,94 @@
+{
+  "name": "Polls",
+  "fields": [
+    {
+      "fieldName": "postId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "closeAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "results",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "visibility",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "min",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "max",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "step",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "anonymousVoters",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "chartType",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "groups",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "posts",
+      "otherEntityRelationshipName": "polls",
+      "relationshipName": "posts"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "pollVotes",
+      "otherEntityRelationshipName": "polls",
+      "relationshipName": "pollVotes",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210524121339",
+  "entityTableName": "polls",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "enableEntityAudit": true
+}

@@ -1,0 +1,68 @@
+{
+  "name": "ThemeFields",
+  "fields": [
+    {
+      "fieldName": "themeId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "targetId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "value",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "valueBaked",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "compilerVersion",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "error",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "uploadId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "typeId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "javascriptCaches",
+      "otherEntityRelationshipName": "themeFields",
+      "relationshipName": "javascriptCaches",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210524125439",
+  "entityTableName": "theme_fields",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "enableEntityAudit": true
+}

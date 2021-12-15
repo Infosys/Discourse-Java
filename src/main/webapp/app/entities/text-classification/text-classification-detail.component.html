@@ -1,0 +1,65 @@
+<!--
+  ~ Copyright 2021 Infosys Ltd.
+  ~ Use of this source code is governed by GNU General Public License version 2
+  ~ that can be found in the LICENSE file or at
+  ~ https://opensource.org/licenses/GPL-2.0
+  -->
+
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="textClassification">
+            <h2><span>Text Classification</span> {{ textClassification.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Content Id</span></dt>
+                <dd>
+                    <span>{{ textClassification.contentId }}</span>
+                </dd>
+                <dt><span>Toxicity</span></dt>
+                <dd>
+                    <span>{{ textClassification.toxicity }}</span>
+                </dd>
+                <dt><span>Severe Toxicity</span></dt>
+                <dd>
+                    <span>{{ textClassification.severeToxicity }}</span>
+                </dd>
+                <dt><span>Obscene</span></dt>
+                <dd>
+                    <span>{{ textClassification.obscene }}</span>
+                </dd>
+                <dt><span>Threat</span></dt>
+                <dd>
+                    <span>{{ textClassification.threat }}</span>
+                </dd>
+                <dt><span>Insult</span></dt>
+                <dd>
+                    <span>{{ textClassification.insult }}</span>
+                </dd>
+                <dt><span>Identity Hate</span></dt>
+                <dd>
+                    <span>{{ textClassification.identityHate }}</span>
+                </dd>
+                <dt><span>Type</span></dt>
+                <dd>
+                    <span>{{ textClassification.type }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/text-classification', textClassification.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

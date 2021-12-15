@@ -1,0 +1,55 @@
+/* after changing this file run 'npm run webpack:build' */
+
+/***************************
+put Sass variables here:
+eg $input-color: red;
+****************************/
+@import '~bootswatch/dist/materia/variables';
+// Override Bootstrap variables
+@import 'bootstrap-variables';
+// Import Bootstrap source files from node_modules
+@import '~bootstrap/scss/bootstrap';
+@import '~bootswatch/dist/materia/bootswatch';
+
+/* jhipster-needle-scss-add-vendor JHipster will add new css style */
+@import '~@material/tab-bar/dist/mdc.tab-bar.css';
+@import '~@material/tab-scroller/dist/mdc.tab-scroller.css';
+@import '~@material/tab-indicator/dist/mdc.tab-indicator.css';
+@import '~@material/tab/dist/mdc.tab.css';
+
+@import '~ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css';
+@import '~ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~perfect-scrollbar/css/perfect-scrollbar.css';
+@import '~ngx-toastr/toastr';
+// @import '~cookieconsent/build/cookieconsent.min.css';
+
+// @import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+// @import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+// @import '~ag-grid-community/dist/styles/ag-grid.css';
+// @import '~ag-grid-community/dist/styles/ag-theme-material.css';
+/* jhipster-needle-scss-add-vendor JHipster will add new css style */
+// @import '~ag-grid-community/dist/styles/ag-theme-balham.css';
+// @import '~ag-grid-community/dist/styles/ag-theme-balham-dark.css';
+/* ==========================================================================
+For more customization see: https://www.npmjs.com/package/ngx-cookieconsent
+========================================================================== */
+@import '~cookieconsent/build/cookieconsent.min.css';
+
+/* jhipster-needle-scss-add-vendor JHipster will add new css style */
+@import url('https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp');
+@import url('https://fonts.googleapis.com/css?family=Bree+Serif|Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Chivo|Montserrat|Roboto|Rokkitt&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans');
+@import url('https://fonts.googleapis.com/css?family=Comfortaa:700|Roboto:900|Russo+One');
+@import url('https://fonts.googleapis.com/css?family=Bree+Serif|Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Chivo|Montserrat|Roboto|Rokkitt&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prata&display=swap');
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Handlee');
+
+@import url('https://fonts.googleapis.com/css?family=Chivo|Montserrat|Roboto|Rokkitt&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Chivo|Montserrat|Roboto|Rokkitt&display=swap');

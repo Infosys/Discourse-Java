@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2021 Infosys Ltd.
+  ~ Use of this source code is governed by GNU General Public License version 2
+  ~ that can be found in the LICENSE file or at
+  ~ https://opensource.org/licenses/GPL-2.0
+  -->
+
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <!--
+        Added the entity IncomingEmails.
+    -->
+    <changeSet id="20210524115539-1" author="jhipster">
+        <createTable tableName="incoming_emails">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="topic_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="post_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="raw" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="error" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="message_id" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="from_address" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="to_addresses" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cc_addresses" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="subject" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="rejection_message" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="is_auto_generated" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="is_bounce" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="imap_uid_validity" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="imap_uid" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="imap_sync" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="imap_group_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="imap_missing" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_via" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20210524115539-1-relations" author="jhipster">
+
+    </changeSet>
+
+    <!-- Added the entity audit columns -->
+    <changeSet id="20210524111121-audit-1" author="jhipster-entity-audit">
+        <addColumn tableName="incoming_emails">
+            <column name="created_by" type="varchar(50)" defaultValue="system">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" defaultValueDate="${now}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="varchar(50)"/>
+            <column name="last_modified_date" type="timestamp"/>
+        </addColumn>
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20210524115539-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/incoming_emails.csv"
+                  separator=";"
+                  tableName="incoming_emails">
+            <column name="id" type="numeric"/>
+            <column name="user_id" type="string"/>
+            <column name="topic_id" type="numeric"/>
+            <column name="post_id" type="numeric"/>
+            <column name="raw" type="string"/>
+            <column name="error" type="string"/>
+            <column name="message_id" type="string"/>
+            <column name="from_address" type="string"/>
+            <column name="to_addresses" type="string"/>
+            <column name="cc_addresses" type="string"/>
+            <column name="subject" type="string"/>
+            <column name="rejection_message" type="string"/>
+            <column name="is_auto_generated" type="boolean"/>
+            <column name="is_bounce" type="boolean"/>
+            <column name="imap_uid_validity" type="numeric"/>
+            <column name="imap_uid" type="numeric"/>
+            <column name="imap_sync" type="boolean"/>
+            <column name="imap_group_id" type="numeric"/>
+            <column name="imap_missing" type="boolean"/>
+            <column name="created_via" type="numeric"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

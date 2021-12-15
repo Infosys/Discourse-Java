@@ -1,0 +1,45 @@
+
+entity Notification{
+	userId String,
+    topicId Long,
+    postId Long,
+    text String,
+    title String,
+    seenAt Instant,
+    notificationStatus NotificationStatus
+}
+
+enum NotificationStatus{
+	CREATED,SEEN
+}
+
+entity Announcment{
+	title String,
+    raw TextBlob,
+    deletedBy String,
+    deletedAt Instant,
+    status AnnouncmentStatus
+}
+
+enum AnnouncmentStatus{
+	ACTIVE,INACTIVE
+}
+
+entity TextClassification{
+	contentId Long,
+    toxicity Double,
+    severeToxicity Double,
+    obscene Double,
+    threat Double,
+    insult Double,
+    identityHate Double,
+    type TextClassficationType
+}
+
+enum TextClassficationType{
+	TOPIC,POST
+}
+
+service all with serviceImpl
+paginate * with pagination
+dto * with mapstruct

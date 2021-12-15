@@ -1,0 +1,85 @@
+{
+  "name": "UserProfiles",
+  "fields": [
+    {
+      "fieldName": "userId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "location",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "website",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bioRaw",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bioCooked",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dismissedBannerKey",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "bioCookedVersion",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "badgeGrantedTitle",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "views",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "profileBackgroundUploadId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "cardBackgroundUploadId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "grantedTitleBadgeId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "featuredTopicId",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "badges",
+      "otherEntityRelationshipName": "userProfiles",
+      "relationshipName": "badges"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "uploads",
+      "otherEntityRelationshipName": "userProfiles",
+      "relationshipName": "uploads"
+    }
+  ],
+  "changelogDate": "20210524133839",
+  "entityTableName": "user_profiles",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "enableEntityAudit": true
+}

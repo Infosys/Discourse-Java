@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2021 Infosys Ltd.
+  ~ Use of this source code is governed by GNU General Public License version 2
+  ~ that can be found in the LICENSE file or at
+  ~ https://opensource.org/licenses/GPL-2.0
+  -->
+
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <!--
+        Added the entity Categories.
+    -->
+    <changeSet id="20210524111739-1" author="jhipster">
+        <createTable tableName="categories">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="color" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="topic_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="topic_count" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="user_id" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="topics_year" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="topics_month" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="topics_week" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="slug" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="description" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="text_color" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="read_restricted" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="auto_close_hours" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="post_count" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="latest_post_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="latest_topic_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="position" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="parent_category_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="posts_year" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="posts_month" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="posts_week" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="email_in" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="email_in_allow_strangers" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="topics_day" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="posts_day" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="allow_badges" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="name_lower" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="auto_close_based_on_last_post" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="topic_template" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="contains_messages" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="sort_order" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="sort_ascending" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="uploaded_logo_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="uploaded_background_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="topic_featured_link_allowed" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="all_topics_wiki" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="show_subcategory_list" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="num_featured_topics" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="default_view" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="subcategory_list_style" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="default_top_period" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="mailinglist_mirror" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="minimum_required_tags" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="navigate_to_first_post_after_read" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="search_priority" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="allow_global_tags" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="reviewable_by_group_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="required_tag_group_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="min_tags_from_required_group" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="read_only_banner" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="default_list_filter" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="allow_unlimited_owner_edits_on_first_post" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20210524111739-1-relations" author="jhipster">
+
+    </changeSet>
+
+    <!-- Added the entity audit columns -->
+    <changeSet id="20210524111121-audit-1" author="jhipster-entity-audit">
+        <addColumn tableName="categories">
+            <column name="created_by" type="varchar(50)" defaultValue="system">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" defaultValueDate="${now}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="varchar(50)"/>
+            <column name="last_modified_date" type="timestamp"/>
+        </addColumn>
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20210524111739-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/categories.csv"
+                  separator=";"
+                  tableName="categories">
+            <column name="id" type="numeric"/>
+            <column name="name" type="string"/>
+            <column name="color" type="string"/>
+            <column name="topic_id" type="numeric"/>
+            <column name="topic_count" type="numeric"/>
+            <column name="user_id" type="string"/>
+            <column name="topics_year" type="numeric"/>
+            <column name="topics_month" type="numeric"/>
+            <column name="topics_week" type="numeric"/>
+            <column name="slug" type="string"/>
+            <column name="description" type="string"/>
+            <column name="text_color" type="string"/>
+            <column name="read_restricted" type="boolean"/>
+            <column name="auto_close_hours" type="numeric"/>
+            <column name="post_count" type="numeric"/>
+            <column name="latest_post_id" type="numeric"/>
+            <column name="latest_topic_id" type="numeric"/>
+            <column name="position" type="numeric"/>
+            <column name="parent_category_id" type="numeric"/>
+            <column name="posts_year" type="numeric"/>
+            <column name="posts_month" type="numeric"/>
+            <column name="posts_week" type="numeric"/>
+            <column name="email_in" type="string"/>
+            <column name="email_in_allow_strangers" type="boolean"/>
+            <column name="topics_day" type="numeric"/>
+            <column name="posts_day" type="numeric"/>
+            <column name="allow_badges" type="boolean"/>
+            <column name="name_lower" type="string"/>
+            <column name="auto_close_based_on_last_post" type="boolean"/>
+            <column name="topic_template" type="string"/>
+            <column name="contains_messages" type="boolean"/>
+            <column name="sort_order" type="string"/>
+            <column name="sort_ascending" type="boolean"/>
+            <column name="uploaded_logo_id" type="numeric"/>
+            <column name="uploaded_background_id" type="numeric"/>
+            <column name="topic_featured_link_allowed" type="boolean"/>
+            <column name="all_topics_wiki" type="boolean"/>
+            <column name="show_subcategory_list" type="boolean"/>
+            <column name="num_featured_topics" type="numeric"/>
+            <column name="default_view" type="string"/>
+            <column name="subcategory_list_style" type="string"/>
+            <column name="default_top_period" type="string"/>
+            <column name="mailinglist_mirror" type="boolean"/>
+            <column name="minimum_required_tags" type="numeric"/>
+            <column name="navigate_to_first_post_after_read" type="boolean"/>
+            <column name="search_priority" type="numeric"/>
+            <column name="allow_global_tags" type="boolean"/>
+            <column name="reviewable_by_group_id" type="numeric"/>
+            <column name="required_tag_group_id" type="numeric"/>
+            <column name="min_tags_from_required_group" type="numeric"/>
+            <column name="read_only_banner" type="string"/>
+            <column name="default_list_filter" type="string"/>
+            <column name="allow_unlimited_owner_edits_on_first_post" type="boolean"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

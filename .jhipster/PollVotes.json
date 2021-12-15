@@ -1,0 +1,43 @@
+{
+  "name": "PollVotes",
+  "fields": [
+    {
+      "fieldName": "pollId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "pollOptionId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "userId",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "pollOptions",
+      "otherEntityRelationshipName": "pollVotes",
+      "relationshipName": "pollOptions"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "polls",
+      "otherEntityRelationshipName": "pollVotes",
+      "relationshipName": "polls"
+    }
+  ],
+  "changelogDate": "20210524121239",
+  "entityTableName": "poll_votes",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "enableEntityAudit": true
+}

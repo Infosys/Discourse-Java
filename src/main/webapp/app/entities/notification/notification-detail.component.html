@@ -1,0 +1,61 @@
+<!--
+  ~ Copyright 2021 Infosys Ltd.
+  ~ Use of this source code is governed by GNU General Public License version 2
+  ~ that can be found in the LICENSE file or at
+  ~ https://opensource.org/licenses/GPL-2.0
+  -->
+
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="notification">
+            <h2><span>Notification</span> {{ notification.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>User Id</span></dt>
+                <dd>
+                    <span>{{ notification.userId }}</span>
+                </dd>
+                <dt><span>Topic Id</span></dt>
+                <dd>
+                    <span>{{ notification.topicId }}</span>
+                </dd>
+                <dt><span>Post Id</span></dt>
+                <dd>
+                    <span>{{ notification.postId }}</span>
+                </dd>
+                <dt><span>Text</span></dt>
+                <dd>
+                    <span>{{ notification.text }}</span>
+                </dd>
+                <dt><span>Title</span></dt>
+                <dd>
+                    <span>{{ notification.title }}</span>
+                </dd>
+                <dt><span>Seen At</span></dt>
+                <dd>
+                    <span>{{ notification.seenAt }}</span>
+                </dd>
+                <dt><span>Notification Status</span></dt>
+                <dd>
+                    <span>{{ notification.notificationStatus }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/notification', notification.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

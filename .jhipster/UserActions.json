@@ -1,0 +1,44 @@
+{
+  "name": "UserActions",
+  "fields": [
+    {
+      "fieldName": "actionType",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "userId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "targetTopicId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "targetPostId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "targetUserId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "actingUserId",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20210524131839",
+  "entityTableName": "user_actions",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "enableEntityAudit": true
+}

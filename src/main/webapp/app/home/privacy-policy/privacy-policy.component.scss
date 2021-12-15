@@ -1,0 +1,27 @@
+img {
+  position: fixed !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  left: 0 !important;
+  z-index: -1 !important;
+}
+
+li {
+  list-style: disc !important;
+}
+
+.dialog-content-headings {
+  font: 500 20px/32px Roboto, 'Helvetica Neue', sans-serif !important;
+  font-style: normal !important;
+  font-variant-ligatures: normal !important;
+  font-variant-caps: normal !important;
+  font-variant-numeric: normal !important;
+  font-variant-east-asian: normal !important;
+  font-weight: 500;
+  font-stretch: normal !important;
+  font-size: 20px !important;
+  line-height: 32px !important;
+  font-family: Roboto, 'Helvetica Neue', sans-serif !important;
+  letter-spacing: normal !important;
+}

@@ -1,0 +1,16 @@
+<!--
+  ~ Copyright 2021 Infosys Ltd.
+  ~ Use of this source code is governed by GNU General Public License version 2
+  ~ that can be found in the LICENSE file or at
+  ~ https://opensource.org/licenses/GPL-2.0
+  -->
+
+<div class="d-inline-block text-nowrap padTB8">
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="d-inline-block icon-div marR8" [ngStyle]="{'background': categoriesJson[categoryId!]?.color}">
+    </div>
+    <div class="DSA_wb_mainBodyTxt2 d-inline text-nowrap">
+      {{categoriesJson[categoryId!]?.name! | titlecase}}
+    </div>
+  </div>
+</div>

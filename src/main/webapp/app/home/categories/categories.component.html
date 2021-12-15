@@ -1,0 +1,175 @@
+<!--
+  ~ Copyright 2021 Infosys Ltd.
+  ~ Use of this source code is governed by GNU General Public License version 2
+  ~ that can be found in the LICENSE file or at
+  ~ https://opensource.org/licenses/GPL-2.0
+  -->
+
+<div *jhiHasAnyAuthority="'ROLE_ADMIN'">
+  <div class="d-flex align-items-center">
+    <div class="nppadLR4 d-inline d-none d-sm-block">
+      <h1 class="DSA_wb_h1Header">Categories</h1>
+    </div>
+
+    <div class="ml-auto" *ngIf='!isViewSmall'>
+      <ng-template [ngTemplateOutlet]='categoriesColorfulToggleTemplate'></ng-template>
+    </div>
+
+    <div class="d-inline" [ngClass]='{"ml-auto": isViewSmall, "marL16": !isViewSmall}'>
+      <mat-chip
+        class="DSA_wb_chipStyle-Normal DSA_choiseChip d-flex align-items-center purple-background h-40 padL4 ml-auto cursor-pointer"
+        disableRipple="true" (click)="initiateCreate()">
+        <i class="icon x-16 icon-add purple iconinline marR8 create-chip-plus-icon"> </i>
+        Create
+      </mat-chip>
+    </div>
+  </div>
+  <div class="padT16" *ngIf='isViewSmall'>
+    <ng-template [ngTemplateOutlet]='categoriesColorfulToggleTemplate'></ng-template>
+  </div>
+
+  <ng-template #categoryDialog let-modal>
+    <div class="modal-header">
+      <h4 class="DSA_wb_h2Header float-left" id="modal-basic-title">
+        {{ !editMode ? 'Create Category' : 'Edit Category'}}&nbsp;
+        <i class="icon x-16 iconinline icon_color_info blue" matTooltip="Click on the color picker to select colors"
+          matTooltipClass="DSA_tooltip">
+        </i>
+      </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <i class="icon x-16 close-icon"> </i>
+      </button>
+    </div>
+    <div class="modal-body nopadTB" [formGroup]="categoryForm">
+      <div class="row marNLR8">
+        <div class="col-12 padLR8">
+          <mat-form-field class="DSA_Wb_custom-form-field">
+            <mat-label>Name</mat-label>
+            <input matInput value="" formControlName="name" required />
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-sm-6 padLR8 hide-mat-form-field">
+          <div class="w-100 d-inline-block text-center padB16 marB8">
+            <strong>Color</strong>
+          </div>
+          <div class="d-inline-block text-center w-100">
+            <ngx-mat-color-toggle matSuffix [for]="colorPicker"></ngx-mat-color-toggle>
+          </div>
+          <div class="w-100 d-inline-block text-center padT16">
+            &nbsp;{{categoryForm.value?.color}}&nbsp;
+          </div>
+
+          <mat-form-field>
+            <mat-label>Color</mat-label>
+            <input matInput [ngxMatColorPicker]="colorPicker" #colorInput formControlName="color"
+              required />
+            <ngx-mat-color-picker #colorPicker [touchUi]="touchUi" [color]="color"></ngx-mat-color-picker>
+            <!-- <mat-error
+              *ngIf="categoryForm.controls['color'].dirty && categoryForm.controls['color'].hasError('pattern')">Please
+              use hexadecimal</mat-error> -->
+          </mat-form-field>
+          <hr>
+        </div>
+
+        <div class="col-12 col-sm-6 padLR8 hide-mat-form-field">
+          <div class="w-100 d-inline-block text-center padB16 marB8">
+            <strong>Text Color</strong>
+          </div>
+          <div class="d-inline-block text-center w-100">
+            <ngx-mat-color-toggle matSuffix [for]="textColorPicker"></ngx-mat-color-toggle>
+          </div>
+          <div class="w-100 d-inline-block text-center padT16">
+            &nbsp;{{categoryForm.value?.text_color}}&nbsp;
+          </div>
+          <mat-form-field>
+            <mat-label>Text Color</mat-label>
+            <input matInput [ngxMatColorPicker]="textColorPicker" #textColorInput formControlName="text_color" required />
+            <ngx-mat-color-picker #textColorPicker [touchUi]="touchUi" [color]="textColor"></ngx-mat-color-picker>
+            <!-- <mat-error
+              *ngIf="categoryForm.controls['text_color'].dirty && categoryForm.controls['text_color'].hasError('pattern')">
+              Please use hexadecimal</mat-error> -->
+          </mat-form-field>
+          <hr>
+        </div>
+        <div class="col-12 padLR8 padT8">
+          <mat-form-field class="DSA_Wb_custom-form-field">
+            <mat-label>Description</mat-label>
+            <textarea class="text-area" matInput value="" formControlName="description" rows="2"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer padT8">
+      <button class="DSA_wb_miniSecondary-btn marR16 ml-auto" mat-flat-button (click)="resetCategory()">Reset</button>
+      <button class="DSA_wb_miniPrimary-btn" mat-flat-button [disabled]="categoryForm.invalid"
+        (click)="!editMode ? createNewCategory() : editCategory()">
+        {{ !editMode ? 'Add' : 'Update' }}
+      </button>
+    </div>
+  </ng-template>
+
+  <div class="row marNLR8">
+    <div class="col-12 col-sm-6 col-md-3 col-lg-3 padT16 padLR8" *ngFor="let category of categoryList">
+      <ng-template #categoryInfoPopover>
+        <div class="DSA_popoverCtr">
+          <h4 class="DSA_popoverTitle">
+            {{ category.name! | titlecase }}
+            <a (click)='categoryInfoPop.hide()' class="DSA_popoverclose" aria-label="Close">
+              <i class="icon x-16 close-icon"> </i>
+            </a>
+          </h4>
+        </div>
+        <div class="DSA_popoverCnt">
+          <div>
+            Color: <strong>{{category.color}}</strong>
+          </div>
+          <div>
+            Text Color: <strong>{{category.text_color}}</strong>
+          </div>
+          <div>
+            <span *ngIf='category?.description?.length !== 0'>
+              Description: <strong>{{ category?.description }}</strong>
+            </span>
+            <span *ngIf='category?.description?.length === 0' class="null-info-text">-- No description available
+              --</span>
+          </div>
+        </div>
+        <div class="DSA_popoverFooter">
+          <button mat-flat-button class="DSA_wb_miniSecondary-btn"
+            (click)="categoryInfoPop.hide();inititateEdit(category)">Edit</button>
+        </div>
+      </ng-template>
+      <a href="javascript:void(0);" [popover]="categoryInfoPopover" placement="bottom" #categoryInfoPop="bs-popover"
+        container="body" containerClass="DSA_popover">
+        <mat-card class="DSA_wb_card-widget cursor-pointer" [ngStyle]="categoryCardStyle(category)"
+          matTooltip="Click to View or Edit" matTooltipClass="DSA_tooltip"
+          aria-label="Button that displays a tooltip when focused or hovered over">
+          <mat-card-header>
+            <mat-card-title>
+              <h2 class="DSA_wb_h2Header DSA_wb_text-1line"
+                [ngStyle]="{ color: changeView ? category.text_color : 'black' }">
+                {{ category.name! | titlecase }}
+              </h2>
+            </mat-card-title>
+            <!-- <i class="icon x-24 edit-icon" (click)="inititateEdit(category)"> </i> -->
+            <!-- <i class="icon x-24 purple-background delete-sm-icon" (click)="deleteCategory(category)"> </i> -->
+            <!-- <mat-card-subtitle class="DSA_wb_caption web-GreyLight nomarB DSA_wb_text-1line"
+            [ngStyle]="{ color: changeView ? category.text_color : 'gray' }">
+          </mat-card-subtitle> -->
+          </mat-card-header>
+        </mat-card>
+      </a>
+    </div>
+  </div>
+  <ng-template #categoriesColorfulToggleTemplate>
+      <mat-chip
+        class="DSA_wb_chipStyle-Normal DSA_choiseChip d-flex align-items-center web-SecondaryBlue padL16 nopadR width-fit-content"
+        disableRipple="true">Colorful&nbsp;&nbsp;
+        <mat-slide-toggle class="DSA_Wb_custom-slideToggle enable-pointer-events nomarTB nomarR marL8"
+          (click)="changeCategoryView()">
+        </mat-slide-toggle>
+      </mat-chip>
+  </ng-template>
+</div>
+
+<jhi-loader></jhi-loader>

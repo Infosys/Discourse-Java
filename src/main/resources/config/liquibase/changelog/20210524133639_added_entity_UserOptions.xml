@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2021 Infosys Ltd.
+  ~ Use of this source code is governed by GNU General Public License version 2
+  ~ that can be found in the LICENSE file or at
+  ~ https://opensource.org/licenses/GPL-2.0
+  -->
+
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <!--
+        Added the entity UserOptions.
+    -->
+    <changeSet id="20210524133639-1" author="jhipster">
+        <createTable tableName="user_options">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="mailing_list_mode" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="email_digests" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="external_links_in_new_tab" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="enable_quoting" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="dynamic_favicon" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="disable_jump_reply" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="automatically_unpin_topics" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="digest_after_minutes" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="auto_track_topics_after_msecs" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="new_topic_duration_minutes" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_redirected_to_top_at" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="email_previous_replies" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="email_in_reply_to" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="like_notification_frequency" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="mailing_list_mode_frequency" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="include_tl_0_in_digests" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="notification_level_when_replying" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="theme_key_seq" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="allow_private_messages" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="homepage_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="theme_ids" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="hide_profile_and_presence" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="text_size_key" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="text_size_seq" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="email_level" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="email_messages_level" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="title_count_mode_key" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="enable_defer" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="timezone" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="enable_allowed_pm_users" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="dark_scheme_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="skip_new_user_tips" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="color_scheme_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="user_options" columnName="last_redirected_to_top_at" columnDataType="datetime"/>
+    </changeSet>
+
+    <changeSet id="20210524133639-1-relations" author="jhipster">
+
+    </changeSet>
+
+    <!-- Added the entity audit columns -->
+    <changeSet id="20210524111121-audit-1" author="jhipster-entity-audit">
+        <addColumn tableName="user_options">
+            <column name="created_by" type="varchar(50)" defaultValue="system">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" defaultValueDate="${now}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="varchar(50)"/>
+            <column name="last_modified_date" type="timestamp"/>
+        </addColumn>
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20210524133639-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/user_options.csv"
+                  separator=";"
+                  tableName="user_options">
+            <column name="id" type="numeric"/>
+            <column name="user_id" type="string"/>
+            <column name="mailing_list_mode" type="boolean"/>
+            <column name="email_digests" type="boolean"/>
+            <column name="external_links_in_new_tab" type="boolean"/>
+            <column name="enable_quoting" type="boolean"/>
+            <column name="dynamic_favicon" type="boolean"/>
+            <column name="disable_jump_reply" type="boolean"/>
+            <column name="automatically_unpin_topics" type="boolean"/>
+            <column name="digest_after_minutes" type="numeric"/>
+            <column name="auto_track_topics_after_msecs" type="numeric"/>
+            <column name="new_topic_duration_minutes" type="numeric"/>
+            <column name="last_redirected_to_top_at" type="datetime"/>
+            <column name="email_previous_replies" type="numeric"/>
+            <column name="email_in_reply_to" type="boolean"/>
+            <column name="like_notification_frequency" type="numeric"/>
+            <column name="mailing_list_mode_frequency" type="numeric"/>
+            <column name="include_tl_0_in_digests" type="boolean"/>
+            <column name="notification_level_when_replying" type="numeric"/>
+            <column name="theme_key_seq" type="numeric"/>
+            <column name="allow_private_messages" type="boolean"/>
+            <column name="homepage_id" type="numeric"/>
+            <column name="theme_ids" type="numeric"/>
+            <column name="hide_profile_and_presence" type="boolean"/>
+            <column name="text_size_key" type="numeric"/>
+            <column name="text_size_seq" type="numeric"/>
+            <column name="email_level" type="numeric"/>
+            <column name="email_messages_level" type="numeric"/>
+            <column name="title_count_mode_key" type="numeric"/>
+            <column name="enable_defer" type="boolean"/>
+            <column name="timezone" type="string"/>
+            <column name="enable_allowed_pm_users" type="boolean"/>
+            <column name="dark_scheme_id" type="numeric"/>
+            <column name="skip_new_user_tips" type="boolean"/>
+            <column name="color_scheme_id" type="numeric"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>
