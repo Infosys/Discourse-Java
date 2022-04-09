@@ -1,10 +1,3 @@
-/*
- * Copyright 2021 Infosys Ltd.
- * Use of this source code is governed by GNU General Public License version 2
- * that can be found in the LICENSE file or at
- * https://opensource.org/licenses/GPL-2.0
- */
-
 package com.infy.service.impl;
 
 import java.time.Instant;
@@ -169,7 +162,7 @@ public class CreateMessageServiceImpl implements CreateMessageService {
 		topics.setLastPostUserId(users.getUserId());
 
 		topics = topicsRepository.save(topics);
-		produceTextClassificationTopics(topics);
+
 
 		Posts posts = new Posts();
 		posts.setRaw(createMessageRequest.getRaw());
@@ -235,6 +228,9 @@ public class CreateMessageServiceImpl implements CreateMessageService {
 		topicOrPostResponse.setTrustLevel(users.getTrustLevel());
 		topicOrPostResponse.setUserTitle(users.getName());
 		topicOrPostResponse.setCurrentUserLike(false);
+
+		produceTextClassificationTopics(topics);
+
 		return topicOrPostResponse;
 	}
 
@@ -310,7 +306,7 @@ public class CreateMessageServiceImpl implements CreateMessageService {
 		posts.setPublicVersion(1);
 
 		posts = postsRepository.save(posts);
-		produceTextClassificationPosts(posts);
+
 
 		TopicOrPostResponse topicOrPostResponse = postResponseMapper.toDto(posts);
 
@@ -348,6 +344,8 @@ public class CreateMessageServiceImpl implements CreateMessageService {
 		topicOrPostResponse.setTrustLevel(users.getTrustLevel());
 		topicOrPostResponse.setUserTitle(users.getName());
 		topicOrPostResponse.setCurrentUserLike(false);
+
+		produceTextClassificationPosts(posts);
 
 		return topicOrPostResponse;
 	}
@@ -577,7 +575,7 @@ public class CreateMessageServiceImpl implements CreateMessageService {
 		textClassificationRequest.setType(TextClassificationType.POST.toString());
 		textClassificationRequest.setContent(posts.getRaw());
 
-		textClassificationProducer.produceTextClassification(textClassificationRequest);
+//		textClassificationProducer.produceTextClassification(textClassificationRequest);
 	}
 
 	private void produceTextClassificationTopics(Topics topics) {
@@ -586,7 +584,7 @@ public class CreateMessageServiceImpl implements CreateMessageService {
 		textClassificationRequest.setType(TextClassificationType.TOPIC.toString());
 		textClassificationRequest.setContent(topics.getTitle());
 
-		textClassificationProducer.produceTextClassification(textClassificationRequest);
+//		textClassificationProducer.produceTextClassification(textClassificationRequest);
 	}
 
 	private void produceNotification(Posts posts, String userId, String username, boolean replyPost) {
